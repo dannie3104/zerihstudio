@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澤日影像</title>
+<meta name="description" content="以暗房與底片語彙打造的質感攝影作品集網站,依主題與風格瀏覽婚禮、風景、人像等攝影作品。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+TC:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#17140f;
+    --ink-2:#1d1912;
+    --surface:#221d16;
+    --surface-2:#2c261c;
+    --line: rgba(239,231,216,0.13);
+    --line-strong: rgba(239,231,216,0.24);
+    --paper:#efe7d8;
+    --paper-dim:#a49a89;
+    --paper-faint:#766d5c;
+    --brass:#b4915b;
+    --brass-bright:#d8b57e;
+    --brass-soft: rgba(180,145,91,0.35);
+    --font-display:'Fraunces','Noto Serif TC',serif;
+    --font-body:'Archivo','Noto Sans TC',sans-serif;
+    --font-mono:'IBM Plex Mono','Noto Sans TC',monospace;
+    --container: 1240px;
+    --gap: 22px;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,canvas{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:500;margin:0;text-wrap:balance;}
+  p{margin:0;}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+  ::selection{background:var(--brass-soft);color:var(--paper);}
+  :focus-visible{outline:2px solid var(--brass-bright);outline-offset:3px;}
+
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--brass);display:inline-block;}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(23,20,15,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-header .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:18px;padding-bottom:18px;
+  }
+  .brand{display:flex;flex-direction:column;gap:2px;text-decoration:none;}
+  .brand-zh{font-family:var(--font-display);font-style:italic;font-size:22px;font-weight:500;color:var(--paper);}
+  .brand-en{font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--paper-dim);text-transform:uppercase;}
+  .site-nav{display:flex;gap:34px;align-items:center;}
+  .site-nav a{
+    font-size:14px;letter-spacing:0.03em;color:var(--paper-dim);
+    text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;
+    transition:color .25s ease, border-color .25s ease;
+  }
+  .site-nav a:hover{color:var(--paper);border-color:var(--brass-soft);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 96px;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;}
+  .hero-copy h1{font-size:clamp(30px,4.2vw,50px);font-weight:400;line-height:1.28;margin:22px 0 26px;color:var(--paper);}
+  .hero-copy h1 em{font-style:italic;color:var(--brass-bright);}
+  .hero-copy p{max-width:46ch;color:var(--paper-dim);font-size:15.5px;}
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:14px 24px;border:1px solid var(--line-strong);text-decoration:none;
+    transition:border-color .25s ease, color .25s ease, background-color .25s ease;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--brass);border-color:var(--brass);color:var(--ink);}
+  .btn-primary:hover{background:var(--brass-bright);border-color:var(--brass-bright);}
+  .btn-ghost{color:var(--paper-dim);}
+  .btn-ghost:hover{color:var(--paper);border-color:var(--paper-dim);}
+
+  .hero-frame{position:relative;padding-left:16px;}
+  .hero-frame .sprocket{position:absolute;left:0;top:0;bottom:0;width:9px;
+    background-image:repeating-linear-gradient(to bottom, var(--line-strong) 0 5px, transparent 5px 15px);
+  }
+  .frame-box{
+    position:relative;border:1px solid var(--line-strong);background:var(--surface);
+    aspect-ratio:4/3;overflow:hidden;
+  }
+  .frame-box canvas,.frame-box img{width:100%;height:100%;object-fit:cover;display:block;}
+  .frame-box .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;}
+  .frame-box .hero-slide.active{opacity:1;}
+  .frame-box .hero-dots{
+    position:absolute;left:0;right:0;bottom:14px;z-index:3;
+    display:flex;justify-content:center;gap:8px;
+  }
+  .hero-dot{
+    width:7px;height:7px;border-radius:50%;padding:0;border:1px solid rgba(23,20,15,0.5);
+    background:rgba(239,231,216,0.45);cursor:pointer;transition:background .2s ease, transform .2s ease;
+  }
+  .hero-dot:hover{background:rgba(239,231,216,0.75);}
+  .hero-dot.active{background:var(--brass-bright);transform:scale(1.35);}
+  .frame-tag{
+    position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:11px;
+    letter-spacing:0.08em;color:var(--paper);background:rgba(23,20,15,0.55);
+    padding:4px 9px;border:1px solid var(--line-strong);
+  }
+  #works, #feedback, #about, #contact{scroll-margin-top:88px;}
+
+  /* ---------- works / category grid ---------- */
+  .works{padding:70px 0 90px;border-top:1px solid var(--line);}
+  .section-head{margin-bottom:44px;max-width:640px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);font-style:italic;margin:16px 0 14px;font-weight:400;}
+  .section-head p{color:var(--paper-dim);font-size:15px;}
+
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    grid-auto-rows:250px;
+    gap:var(--gap);
+  }
+  .cat-tile:first-child{grid-column:span 2;grid-row:span 2;}
+
+  .cat-tile a{
+    position:relative;display:block;height:100%;overflow:hidden;
+    border:1px solid var(--line);background:var(--surface);
+    text-decoration:none;
+  }
+  .cat-tile .tile-media{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .cat-tile a:hover .tile-media{transform:scale(1.045);}
+  .cat-tile-scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(23,20,15,0.92) 0%, rgba(23,20,15,0.35) 46%, rgba(23,20,15,0.05) 70%);
+  }
+  .cat-roll{
+    position:absolute;top:16px;left:16px;font-family:var(--font-mono);font-size:11px;
+    letter-spacing:0.1em;color:var(--paper-dim);
+  }
+  .cat-body{position:absolute;left:22px;right:22px;bottom:18px;}
+  .cat-body .en{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;color:var(--brass-bright);text-transform:uppercase;}
+  .cat-body h3{font-family:var(--font-display);font-style:italic;font-size:clamp(22px,2.4vw,32px);color:var(--paper);margin:6px 0 10px;font-weight:500;}
+  .cat-body .meta{
+    font-family:var(--font-mono);font-size:11px;color:var(--paper-dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .cat-body .meta .bar{width:0;height:1px;background:var(--brass);transition:width .4s ease;}
+  .cat-tile a:hover .meta .bar{width:26px;}
+
+  /* ---------- client feedback ---------- */
+  .feedback{padding:70px 0 90px;border-top:1px solid var(--line);}
+  .feedback-list{display:flex;flex-direction:column;gap:26px;max-width:720px;margin:0 auto;}
+  .feedback-row{display:flex;flex-direction:column;max-width:78%;}
+  .feedback-row.left{align-self:flex-start;align-items:flex-start;}
+  .feedback-row.right{align-self:flex-end;align-items:flex-end;}
+  .feedback-bubble{
+    position:relative;padding:20px 22px;border:1px solid var(--line-strong);
+    background:var(--surface);border-radius:16px 16px 16px 4px;
+  }
+  .feedback-row.right .feedback-bubble{background:var(--surface-2);border-radius:16px 16px 4px 16px;}
+  .feedback-bubble p{font-family:var(--font-display);font-style:italic;font-size:16px;line-height:1.65;color:var(--paper);margin:0;text-wrap:balance;}
+  .feedback-byline{margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;color:var(--paper-faint);}
+  .feedback-byline .name{color:var(--brass-bright);}
+  @media(max-width:640px){
+    .feedback-row{max-width:92%;}
+  }
+
+  /* ---------- about ---------- */
+  .about{padding:80px 0;border-top:1px solid var(--line);}
+  .about .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;}
+  .about-text h2{font-size:clamp(24px,3vw,32px);margin:16px 0 20px;font-style:italic;font-weight:400;}
+  .about-text p{color:var(--paper-dim);font-size:15px;max-width:52ch;}
+  .spec-sheet{border-top:1px solid var(--line);}
+  .spec-row{
+    display:grid;grid-template-columns:150px 1fr;gap:20px;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .spec-row dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;color:var(--brass);text-transform:uppercase;}
+  .spec-row dd{margin:0;font-size:14.5px;color:var(--paper);}
+
+  /* ---------- contact ---------- */
+  .contact{padding:80px 0 60px;border-top:1px solid var(--line);}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;}
+  .contact h2{font-size:clamp(26px,3.4vw,38px);font-style:italic;font-weight:400;margin:16px 0 18px;}
+  .contact p{color:var(--paper-dim);font-size:15px;max-width:44ch;}
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .contact-list a{
+    display:flex;justify-content:space-between;text-decoration:none;
+    font-size:16px;padding-bottom:12px;border-bottom:1px solid var(--line);
+    transition:border-color .25s ease;
+  }
+  .contact-list a:hover{border-color:var(--brass);}
+  .contact-list span{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.08em;}
+
+  .site-footer{border-top:1px solid var(--line);padding:26px 0;}
+  .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .site-footer p{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.04em;}
+
+  /* ---------- category view ---------- */
+  #view-category{display:none;}
+  #view-category.active{display:block;}
+  #view-home.hidden{display:none;}
+
+  .cat-header{padding:52px 0 40px;border-bottom:1px solid var(--line);}
+  .breadcrumb{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--paper-faint);
+    display:flex;gap:8px;margin-bottom:22px;text-transform:uppercase;
+  }
+  .breadcrumb a{text-decoration:none;color:var(--paper-dim);}
+  .breadcrumb a:hover{color:var(--brass-bright);}
+  .cat-header .en-label{font-family:var(--font-mono);font-size:12px;letter-spacing:0.18em;color:var(--brass);text-transform:uppercase;}
+  .cat-header h1{font-size:clamp(32px,5vw,54px);font-style:italic;font-weight:500;margin:12px 0 16px;}
+  .cat-header .desc{color:var(--paper-dim);font-size:15px;max-width:56ch;margin-bottom:8px;}
+  .cat-header .roll-meta{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.06em;}
+
+  .filters{display:flex;flex-wrap:wrap;gap:10px;padding:28px 0 0;}
+  .filter-pill{
+    font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.05em;
+    padding:9px 16px;border:1px solid var(--line-strong);color:var(--paper-dim);
+    transition:all .2s ease;
+  }
+  .filter-pill:hover{color:var(--paper);border-color:var(--paper-dim);}
+  .filter-pill.active{background:var(--brass);border-color:var(--brass);color:var(--ink);}
+
+  .gallery{padding:40px 0 90px;column-gap:var(--gap);column-count:1;}
+  @media(min-width:680px){.gallery{column-count:2;}}
+  @media(min-width:1020px){.gallery{column-count:3;}}
+  .frame{
+    break-inside:avoid;margin:0 0 var(--gap);border:1px solid var(--line);
+    background:var(--surface);position:relative;overflow:hidden;
+  }
+  .frame button{display:block;width:100%;padding:0;position:relative;}
+  .frame img{width:100%;height:auto;display:block;transition:transform .5s ease;}
+  .frame:hover img{transform:scale(1.04);}
+  .frame .frame-no{
+    position:absolute;top:10px;left:10px;font-family:var(--font-mono);font-size:10px;
+    color:var(--paper);background:rgba(23,20,15,0.55);padding:3px 7px;border:1px solid var(--line-strong);
+  }
+
+  .empty-state{padding:50px 0 100px;}
+  .empty-state p{color:var(--paper-dim);font-size:14.5px;margin-bottom:22px;}
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(15,13,9,0.94);z-index:100;
+    display:flex;flex-direction:column;padding:22px;
+  }
+  .lightbox[hidden]{display:none;}
+  .lb-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:12px;color:var(--paper-dim);letter-spacing:0.06em;}
+  .lb-close{font-size:22px;line-height:1;color:var(--paper);padding:6px 10px;}
+  .lb-close:hover{color:var(--brass-bright);}
+  .lb-body{flex:1;display:flex;align-items:center;justify-content:center;gap:18px;min-height:0;padding:16px 0;}
+  .lb-nav{font-family:var(--font-display);font-style:italic;font-size:38px;color:var(--paper-dim);padding:10px 14px;}
+  .lb-nav:hover{color:var(--brass-bright);}
+  .lb-image-wrap{
+    max-width:min(920px,80vw);max-height:100%;border:1px solid var(--line-strong);background:var(--surface);
+    overflow:hidden;touch-action:pan-y;
+  }
+  .lb-image-wrap img{max-height:70vh;width:auto;height:auto;max-width:100%;display:block;}
+  .lb-bottom{
+    display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:12px;
+    font-family:var(--font-mono);font-size:12px;color:var(--paper-dim);
+    border-top:1px solid var(--line);padding-top:14px;letter-spacing:0.03em;
+  }
+  .lb-tag{border:1px solid var(--line-strong);padding:4px 10px;color:var(--brass-bright);}
+
+  @media(max-width:900px){
+    .hero .wrap, .about .wrap, .contact .wrap{grid-template-columns:1fr;}
+    .hero-frame{margin-top:20px;}
+    .cat-grid{grid-template-columns:1fr;grid-auto-rows:300px;}
+    .cat-tile:first-child{grid-column:auto;grid-row:auto;}
+    .site-nav{gap:20px;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px;}
+    .site-nav a:nth-child(3){display:none;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}
+  }
+
+  .fade-in{animation:fadeUp .6s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#/" class="brand">
+        <span class="brand-zh">澤日影像</span>
+        <span class="brand-en">Studio of Light</span>
+      </a>
+      <nav class="site-nav">
+        <a href="#works">作品</a>
+        <a href="#about">關於</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="view-home">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy fade-in">
+          <span class="eyebrow">Selected Works · 精選作品集</span>
+          <h1>光,經過鏡頭,<br>顯影成<em>影像</em>。</h1>
+          <p>澤日影像記錄婚禮、風景、人像與商業現場的真實瞬間,以底片般細膩的層次與顆粒感,留下值得反覆回看的畫面。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#works">瀏覽作品集</a>
+            <a class="btn btn-ghost" href="#about">關於澤日影像</a>
+          </div>
+        </div>
+        <div class="hero-frame fade-in">
+          <span class="sprocket"></span>
+          <div class="frame-box" id="hero-frame-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="works" id="works">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Browse by Theme · 瀏覽主題</span>
+          <h2>一卷底片,一種凝視。</h2>
+          <p>點選任一主題,進入專屬的觀景窗,依拍攝風格再次篩選。</p>
+        </div>
+        <div class="cat-grid" id="cat-grid"></div>
+      </div>
+    </section>
+
+    <section class="feedback" id="feedback">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Client Words · 顧客回饋</span>
+          <h2>他們是這樣說的。</h2>
+          <p>來自曾經合作過的新人與客戶,最真實的回饋。</p>
+        </div>
+        <div class="feedback-list" id="feedback-list"></div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap">
+        <div class="about-text">
+          <span class="eyebrow">About · 關於澤日影像</span>
+          <h2>以真實的光,說一個誠實的故事。</h2>
+          <p>澤日影像成立於對底片與暗房的迷戀——相信影像最動人的部分,不是完美,而是真實的顆粒與呼吸感。我們遊走於婚禮現場、山海之間與城市街角,用鏡頭記錄那些一閃即逝的瞬間,並在後製時保留它們原本的溫度。</p>
+        </div>
+        <dl class="spec-sheet">
+          <div class="spec-row"><dt>拍攝理念</dt><dd>自然光優先,忠於現場氛圍與真實情緒</dd></div>
+          <div class="spec-row"><dt>拍攝範圍</dt><dd>婚禮・人像・風景・商業・活動紀錄</dd></div>
+          <div class="spec-row"><dt>服務地區</dt><dd>台灣本島為主,可安排海外採訪拍攝</dd></div>
+          <div class="spec-row"><dt>交件形式</dt><dd>高解析原檔,附底片質感校色版本</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Contact · 開始合作</span>
+          <h2>預約你的<br>顯影計畫。</h2>
+          <p>無論是婚禮紀錄、品牌形象或個人寫真,歡迎先聊聊你想留下的畫面。</p>
+        </div>
+        <ul class="contact-list">
+          <li><a href="mailto:hello@zeri.studio">hello@zeri.studio <span>Email</span></a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">@zeri.studio <span>Instagram</span></a></li>
+          <li><a href="#">+886 2 2700 0000 <span>Studio Line</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <main id="view-category">
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 澤日影像 STUDIO OF LIGHT</p>
+      <p>ALL FRAMES DEVELOPED IN-HOUSE</p>
+    </div>
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb-top">
+    <span id="lb-counter">001 / 001</span>
+    <button class="lb-close" id="lb-close" aria-label="關閉">&times;</button>
+  </div>
+  <div class="lb-body">
+    <button class="lb-nav" id="lb-prev" aria-label="上一張">&lsaquo;</button>
+    <div class="lb-image-wrap">
+      <img id="lb-image" alt="">
+    </div>
+    <button class="lb-nav" id="lb-next" aria-label="下一張">&rsaquo;</button>
+  </div>
+  <div class="lb-bottom">
+    <span class="lb-tag" id="lb-tag"></span>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- seeded random (placeholder art for categories without real photos yet) ---------- */
+  function hashStr(s){
+    var h = 1779033703 ^ s.length;
+    for (var i=0;i<s.length;i++){
+      h = Math.imul(h ^ s.charCodeAt(i), 3432918353);
+      h = (h << 13) | (h >>> 19);
+    }
+    return function(){
+      h = Math.imul(h ^ (h >>> 16), 2246822507);
+      h = Math.imul(h ^ (h >>> 13), 3266489909);
+      h ^= h >>> 16;
+      return (h >>> 0) / 4294967296;
+    };
+  }
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function rngFor(seedKey){
+    var seedFn = hashStr(seedKey);
+    var seed = Math.floor(seedFn()*4294967296);
+    return mulberry32(seed);
+  }
+  function range(rng, min, max){ return min + rng()*(max-min); }
+
+  var INK = '#17140f';
+  var BRASS = '#b4915b';
+
+  var noisePattern = null;
+  function getNoisePattern(ctx){
+    if (noisePattern) return noisePattern;
+    var n = document.createElement('canvas');
+    n.width = 60; n.height = 60;
+    var nctx = n.getContext('2d');
+    var img = nctx.createImageData(60,60);
+    for (var i=0;i<img.data.length;i+=4){
+      var v = Math.floor(Math.random()*255);
+      img.data[i]=v; img.data[i+1]=v; img.data[i+2]=v; img.data[i+3]=28;
+    }
+    nctx.putImageData(img,0,0);
+    noisePattern = ctx.createPattern(n,'repeat');
+    return noisePattern;
+  }
+
+  function paintFrame(canvas, seedKey, tintHex){
+    var w = canvas.width, h = canvas.height;
+    var ctx = canvas.getContext('2d');
+    var rng = rngFor(seedKey);
+
+    ctx.fillStyle = INK;
+    ctx.fillRect(0,0,w,h);
+
+    var blobs = 4 + Math.floor(rng()*2);
+    for (var i=0;i<blobs;i++){
+      var cx = range(rng, w*0.05, w*0.95);
+      var cy = range(rng, h*0.05, h*0.95);
+      var r = range(rng, w*0.18, w*0.42);
+      var col = rng() > 0.55 ? BRASS : tintHex;
+      var alpha = range(rng, 0.14, 0.32);
+      try{ ctx.filter = 'blur(' + Math.round(range(rng,40,90)) + 'px)'; }catch(e){}
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, r, r*range(rng,0.7,1.1), range(rng,0,Math.PI), 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.filter = 'none';
+    ctx.globalAlpha = 1;
+
+    var vg = ctx.createRadialGradient(w/2,h/2, h*0.2, w/2,h/2, h*0.75);
+    vg.addColorStop(0,'rgba(23,20,15,0)');
+    vg.addColorStop(1,'rgba(23,20,15,0.55)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0,0,w,h);
+
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = getNoisePattern(ctx);
+    ctx.fillRect(0,0,w,h);
+    ctx.globalAlpha = 1;
+  }
+
+  function renderFeedback(TESTIMONIALS){
+    var feedbackList = document.getElementById('feedback-list');
+    TESTIMONIALS.forEach(function(t, i){
+      var row = document.createElement('div');
+      row.className = 'feedback-row ' + (i % 2 === 0 ? 'left' : 'right');
+      row.innerHTML =
+        '<div class="feedback-bubble"><p>' + t.quote + '</p></div>' +
+        '<div class="feedback-byline"><span class="name">' + t.name + '</span>' + (t.tag ? ' · ' + t.tag : '') + '</div>';
+      feedbackList.appendChild(row);
+    });
+  }
+
+  function renderSite(CATEGORIES){
+  /* ---------- home: category grid ---------- */
+  var grid = document.getElementById('cat-grid');
+  CATEGORIES.forEach(function(cat, idx){
+    var hasPhoto = cat.photos.length > 0;
+    var coverPhoto = null;
+    for (var ci=0; ci<cat.photos.length; ci++){
+      if (cat.photos[ci].isCover){ coverPhoto = cat.photos[ci]; break; }
+    }
+    if (!coverPhoto && hasPhoto) coverPhoto = cat.photos[0];
+    var tile = document.createElement('div');
+    tile.className = 'cat-tile';
+    var mediaHtml = hasPhoto
+      ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'">'
+      : '<canvas class="tile-media" width="1000" height="750"></canvas>';
+    var countText = hasPhoto ? (cat.photos.length + ' 張作品') : '即將上線';
+    var enHtml = cat.en ? '<span class="en">'+cat.en+'</span>' : '';
+    tile.innerHTML =
+      '<a href="#/c/'+cat.id+'">' +
+        mediaHtml +
+        '<div class="cat-tile-scrim"></div>' +
+        '<span class="cat-roll">ROLL '+String(idx+1).padStart(2,'0')+'</span>' +
+        '<div class="cat-body">' +
+          enHtml +
+          '<h3>'+cat.zh+'</h3>' +
+          '<div class="meta"><span>'+countText+'</span><span class="bar"></span></div>' +
+        '</div>' +
+      '</a>';
+    grid.appendChild(tile);
+    if (!hasPhoto){
+      var cv = tile.querySelector('canvas');
+      requestAnimationFrame(function(){ paintFrame(cv, 'tile-'+cat.id, cat.tintHex); });
+    }
+  });
+
+  /* ---------- hero: carousel through every photo marked "首頁精選" ---------- */
+  var heroFrameBox = document.getElementById('hero-frame-box');
+  var heroSlides = [];
+  CATEGORIES.forEach(function(cat){
+    cat.photos.forEach(function(photo){
+      if (photo.isFeatured) heroSlides.push({cat:cat, photo:photo});
+    });
+  });
+  if (!heroSlides.length){
+    for (var hk=0; hk<CATEGORIES.length; hk++){
+      if (CATEGORIES[hk].photos.length){ heroSlides.push({cat:CATEGORIES[hk], photo:CATEGORIES[hk].photos[0]}); break; }
+    }
+  }
+
+  if (heroSlides.length){
+    var slideHtml = heroSlides.map(function(s, i){
+      return '<img class="hero-slide'+(i===0?' active':'')+'" src="'+s.photo.file+'" alt="'+s.cat.zh+'">';
+    }).join('');
+    heroFrameBox.innerHTML = slideHtml + '<span class="frame-tag">MASTER ROLL</span>' +
+      (heroSlides.length > 1 ? '<div class="hero-dots" id="hero-dots"></div>' : '');
+
+    if (heroSlides.length > 1){
+      var dotsEl = document.getElementById('hero-dots');
+      var slideEls = heroFrameBox.querySelectorAll('.hero-slide');
+      var dotEls = [];
+      heroSlides.forEach(function(s, i){
+        var dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i===0 ? ' active' : '');
+        dot.setAttribute('aria-label', '第 '+(i+1)+' 張精選照');
+        dotsEl.appendChild(dot);
+        dotEls.push(dot);
+      });
+      var heroIndex = 0;
+      var heroTimer = null;
+      var prefersReducedMotionHero = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function showHeroSlide(i){
+        heroIndex = i;
+        slideEls.forEach(function(el, idx){ el.classList.toggle('active', idx===i); });
+        dotEls.forEach(function(el, idx){ el.classList.toggle('active', idx===i); });
+      }
+      function nextHeroSlide(){ showHeroSlide((heroIndex+1) % heroSlides.length); }
+      function stopHeroAutoplay(){
+        if (heroTimer){ clearInterval(heroTimer); heroTimer = null; }
+      }
+      function startHeroAutoplay(){
+        if (prefersReducedMotionHero) return;
+        stopHeroAutoplay();
+        heroTimer = setInterval(nextHeroSlide, 4500);
+      }
+      dotEls.forEach(function(dot, i){
+        dot.addEventListener('click', function(){
+          showHeroSlide(i);
+          startHeroAutoplay();
+        });
+      });
+      heroFrameBox.addEventListener('mouseenter', stopHeroAutoplay);
+      heroFrameBox.addEventListener('mouseleave', startHeroAutoplay);
+      startHeroAutoplay();
+    }
+  } else {
+    heroFrameBox.innerHTML = '<canvas id="hero-canvas" width="1400" height="1050"></canvas><span class="frame-tag">MASTER ROLL</span>';
+    requestAnimationFrame(function(){ paintFrame(document.getElementById('hero-canvas'), 'hero-master', '#b4915b'); });
+  }
+
+  /* ---------- category view ---------- */
+  var viewCategory = document.getElementById('view-category');
+  var viewHome = document.getElementById('view-home');
+  var builtCategories = {};
+
+  function buildCategorySection(cat){
+    var section = document.createElement('div');
+    section.className = 'cat-section';
+    section.style.display = 'none';
+
+    var enLabelHtml = cat.en ? '<span class="en-label">'+cat.en+'</span>' : '';
+    var rollMetaHtml = cat.photos.length ? '<p class="roll-meta">共 '+cat.photos.length+' 張作品</p>' : '';
+
+    var header = document.createElement('div');
+    header.className = 'cat-header';
+    header.innerHTML =
+      '<div class="wrap">' +
+        '<div class="breadcrumb"><a href="#/">首頁</a><span>/</span><span>'+cat.zh+'</span></div>' +
+        enLabelHtml +
+        '<h1>'+cat.zh+'</h1>' +
+        '<p class="desc">'+cat.tagline+'</p>' +
+        rollMetaHtml +
+        (cat.photos.length ? '<div class="filters"></div>' : '') +
+      '</div>';
+    section.appendChild(header);
+
+    var bodyWrap = document.createElement('div');
+    bodyWrap.className = 'wrap';
+
+    if (!cat.photos.length){
+      var empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.innerHTML = '<p>這個系列的作品正在整理中,很快就會與大家見面。</p><a class="btn btn-ghost" href="#/">回首頁看看其他作品</a>';
+      bodyWrap.appendChild(empty);
+      section.appendChild(bodyWrap);
+      viewCategory.appendChild(section);
+      return section;
+    }
+
+    var filtersEl = header.querySelector('.filters');
+    cat.filters.forEach(function(f, i){
+      var btn = document.createElement('button');
+      btn.className = 'filter-pill' + (i===0 ? ' active' : '');
+      btn.textContent = f;
+      btn.dataset.tag = f;
+      filtersEl.appendChild(btn);
+    });
+
+    var gallery = document.createElement('div');
+    gallery.className = 'gallery';
+    bodyWrap.appendChild(gallery);
+    section.appendChild(bodyWrap);
+
+    cat.photos.forEach(function(photo, i){
+      var fig = document.createElement('div');
+      fig.className = 'frame';
+      fig.dataset.tag = photo.tag;
+      fig.innerHTML =
+        '<button data-idx="'+i+'">' +
+          '<img src="'+photo.file+'" alt="'+cat.zh+' '+photo.tag+'" loading="lazy">' +
+          '<span class="frame-no">No. '+String(i+1).padStart(3,'0')+'</span>' +
+        '</button>';
+      gallery.appendChild(fig);
+      fig.querySelector('button').addEventListener('click', function(){
+        openLightbox(cat, cat.photos, i);
+      });
+    });
+
+    filtersEl.addEventListener('click', function(e){
+      var btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      filtersEl.querySelectorAll('.filter-pill').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var tag = btn.dataset.tag;
+      gallery.querySelectorAll('.frame').forEach(function(fr){
+        fr.style.display = (tag === '全部' || fr.dataset.tag === tag) ? '' : 'none';
+      });
+    });
+
+    viewCategory.appendChild(section);
+    return section;
+  }
+
+  function showCategory(id){
+    var cat = CATEGORIES.filter(function(c){ return c.id === id; })[0];
+    if (!cat) { location.hash = '#/'; return; }
+    Object.keys(builtCategories).forEach(function(k){
+      builtCategories[k].style.display = 'none';
+    });
+    if (!builtCategories[id]){
+      builtCategories[id] = buildCategorySection(cat);
+    }
+    builtCategories[id].style.display = 'block';
+    viewHome.classList.add('hidden');
+    viewCategory.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function showHome(){
+    viewCategory.classList.remove('active');
+    viewHome.classList.remove('hidden');
+  }
+
+  function route(){
+    var hash = location.hash;
+    var m = hash.match(/^#\/c\/([a-z0-9]+)/i);
+    if (m){ showCategory(m[1]); return; }
+    showHome();
+    var anchor = hash.match(/^#(works|feedback|about|contact)$/);
+    if (anchor){
+      requestAnimationFrame(function(){
+        var el = document.getElementById(anchor[1]);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  /* ---------- lightbox ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lbImageWrap = document.querySelector('.lb-image-wrap');
+  var lbImage = document.getElementById('lb-image');
+  var lbCounter = document.getElementById('lb-counter');
+  var lbTag = document.getElementById('lb-tag');
+  var lbState = { cat:null, photos:[], index:0 };
+  var lbAnimating = false;
+  var prefersReducedMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SLIDE_MS = 170;
+  var SLIDE_PX = 26;
+
+  function applyLightboxContent(){
+    var cat = lbState.cat, photos = lbState.photos, i = lbState.index;
+    var photo = photos[i];
+    lbImage.src = photo.file;
+    lbImage.alt = cat.zh + ' ' + photo.tag;
+    lbCounter.textContent = String(i+1).padStart(3,'0') + ' / ' + String(photos.length).padStart(3,'0');
+    lbTag.textContent = photo.tag;
+  }
+
+  function openLightbox(cat, photos, index){
+    lbState = { cat:cat, photos:photos, index:index };
+    applyLightboxContent();
+    lbImage.style.transition = 'none';
+    lbImage.style.transform = 'translateX(0)';
+    lbImage.style.opacity = '1';
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+  function stepLightbox(dir){
+    var n = lbState.photos.length;
+    if (n <= 1) return;
+    lbState.index = (lbState.index + dir + n) % n;
+
+    if (prefersReducedMotion){
+      applyLightboxContent();
+      return;
+    }
+    if (lbAnimating) { applyLightboxContent(); return; }
+    lbAnimating = true;
+    var outX = dir > 0 ? -SLIDE_PX : SLIDE_PX;
+    var inX = dir > 0 ? SLIDE_PX : -SLIDE_PX;
+    lbImage.style.transition = 'transform ' + SLIDE_MS + 'ms ease, opacity ' + SLIDE_MS + 'ms ease';
+    lbImage.style.transform = 'translateX(' + outX + 'px)';
+    lbImage.style.opacity = '0';
+    setTimeout(function(){
+      applyLightboxContent();
+      lbImage.style.transition = 'none';
+      lbImage.style.transform = 'translateX(' + inX + 'px)';
+      void lbImage.offsetWidth;
+      lbImage.style.transition = 'transform ' + SLIDE_MS + 'ms ease, opacity ' + SLIDE_MS + 'ms ease';
+      lbImage.style.transform = 'translateX(0)';
+      lbImage.style.opacity = '1';
+      setTimeout(function(){ lbAnimating = false; }, SLIDE_MS);
+    }, SLIDE_MS);
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', function(){ stepLightbox(-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ stepLightbox(1); });
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) closeLightbox(); });
+  window.addEventListener('keydown', function(e){
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') stepLightbox(-1);
+    if (e.key === 'ArrowRight') stepLightbox(1);
+  });
+
+  var touchStartX = 0, touchStartY = 0, touchActive = false;
+  lbImageWrap.addEventListener('touchstart', function(e){
+    if (e.touches.length !== 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchActive = true;
+  }, {passive:true});
+  lbImageWrap.addEventListener('touchend', function(e){
+    if (!touchActive) return;
+    touchActive = false;
+    var t = e.changedTouches[0];
+    var dx = t.clientX - touchStartX;
+    var dy = t.clientY - touchStartY;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
+      stepLightbox(dx < 0 ? 1 : -1);
+    }
+  }, {passive:true});
+
+  } /* end renderSite */
+
+  /* ---------- load content from data/*.json (editable via /admin CMS) ---------- */
+  Promise.all([
+    fetch('data/categories.json').then(function(r){ return r.json(); }),
+    fetch('data/photos.json').then(function(r){ return r.json(); }),
+    fetch('data/testimonials.json').then(function(r){ return r.json(); })
+  ]).then(function(results){
+    var catData = results[0].categories || [];
+    var photoData = results[1].photos || [];
+    var testimonialData = (results[2].testimonials || []).slice().sort(function(a,b){ return a.order - b.order; });
+    var catsById = {};
+    var CATEGORIES = catData.slice().sort(function(a,b){ return a.order - b.order; }).map(function(c){
+      var cat = { id:c.id, zh:c.zh, en:c.en, tagline:c.tagline, tintHex:c.tintHex, photos:[] };
+      catsById[c.id] = cat;
+      return cat;
+    });
+    photoData.forEach(function(p){
+      var cat = catsById[p.category];
+      if (cat) cat.photos.push(p);
+    });
+    CATEGORIES.forEach(function(cat){
+      cat.photos.sort(function(a,b){ return a.order - b.order; });
+      var seen = {}, tags = [];
+      cat.photos.forEach(function(p){
+        if (p.tag && !seen[p.tag]){ seen[p.tag] = true; tags.push(p.tag); }
+      });
+      cat.filters = ['全部'].concat(tags);
+    });
+    renderFeedback(testimonialData);
+    renderSite(CATEGORIES);
+  }).catch(function(err){
+    var grid = document.getElementById('cat-grid');
+    if (grid) grid.innerHTML = '<p style="color:var(--paper-dim);padding:20px 0;">內容載入失敗,請重新整理頁面再試一次。</p>';
+    console.error('Failed to load site content:', err);
+  });
+
+})();
+</script>
+</body>
+</html>

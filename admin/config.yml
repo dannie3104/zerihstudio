@@ -1,0 +1,71 @@
+backend:
+  name: git-gateway
+  branch: main
+  # 這兩行等 Netlify 的 Identity + Git Gateway 設定好之後,
+  # 換成你的 Netlify site 網址,例如:
+  # identity_url: https://zeri-admin.netlify.app/.netlify/identity
+  # gateway_url: https://zeri-admin.netlify.app/.netlify/git/github
+  identity_url: https://REPLACE-WITH-YOUR-NETLIFY-SITE.netlify.app/.netlify/identity
+  gateway_url: https://REPLACE-WITH-YOUR-NETLIFY-SITE.netlify.app/.netlify/git/github
+
+media_folder: "uploads"
+public_folder: "uploads"
+
+locale: "zh_Hant"
+
+collections:
+  - name: "categories"
+    label: "分類管理"
+    files:
+      - file: "data/categories.json"
+        label: "所有分類"
+        name: "categories"
+        fields:
+          - label: "分類清單"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.zh}}"
+            fields:
+              - { label: "分類代碼 (id)", name: "id", widget: "string", hint: "英數字,不要有空格或中文;建立後請不要更改,照片會用這個代碼對應分類" }
+              - { label: "中文名稱", name: "zh", widget: "string" }
+              - { label: "英文名稱", name: "en", widget: "string", required: false }
+              - { label: "介紹句", name: "tagline", widget: "text" }
+              - { label: "主題色", name: "tintHex", widget: "color", hint: "沒有真實照片時,首頁方塊會用這個顏色顯示抽象光影當作示意圖" }
+              - { label: "排序", name: "order", widget: "number", value_type: "int", hint: "數字小的排前面" }
+
+  - name: "photos"
+    label: "照片管理"
+    files:
+      - file: "data/photos.json"
+        label: "所有照片"
+        name: "photos"
+        fields:
+          - label: "照片清單"
+            name: "photos"
+            widget: "list"
+            summary: "{{fields.category}} · {{fields.tag}}"
+            fields:
+              - { label: "照片代碼 (id)", name: "id", widget: "string", hint: "英數字,不要有空格或中文;建立後請不要更改" }
+              - { label: "所屬分類代碼", name: "category", widget: "string", hint: "要跟「分類管理」裡的分類代碼完全一致,例如 wedding" }
+              - { label: "風格標籤", name: "tag", widget: "string", hint: "例如:迎娶、婚紗、戶外——會變成該分類頁面上的篩選按鈕" }
+              - { label: "排序", name: "order", widget: "number", value_type: "int" }
+              - { label: "照片檔案", name: "file", widget: "image" }
+              - { label: "設為分類封面", name: "isCover", widget: "boolean", default: false, hint: "每個分類建議只勾一張,勾新的請記得把舊的取消" }
+              - { label: "設為首頁精選輪播", name: "isFeatured", widget: "boolean", default: false, hint: "可以勾很多張,首頁大圖會自動輪播這些照片" }
+
+  - name: "testimonials"
+    label: "顧客回饋"
+    files:
+      - file: "data/testimonials.json"
+        label: "所有回饋"
+        name: "testimonials"
+        fields:
+          - label: "回饋清單"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "客戶稱呼", name: "name", widget: "string" }
+              - { label: "標籤(選填)", name: "tag", widget: "string", required: false, hint: "例如:婚禮客戶、商業攝影" }
+              - { label: "回饋內容", name: "quote", widget: "text" }
+              - { label: "排序", name: "order", widget: "number", value_type: "int" }
