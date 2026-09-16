@@ -1,12 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-  # 這兩行等 Netlify 的 Identity + Git Gateway 設定好之後,
-  # 換成你的 Netlify site 網址,例如:
-  # identity_url: https://zeri-admin.netlify.app/.netlify/identity
-  # gateway_url: https://zeri-admin.netlify.app/.netlify/git/github
-  identity_url: https://REPLACE-WITH-YOUR-NETLIFY-SITE.netlify.app/.netlify/identity
-  gateway_url: https://REPLACE-WITH-YOUR-NETLIFY-SITE.netlify.app/.netlify/git/github
+  identity_url: https://zeri-admin.netlify.app/.netlify/identity
+  gateway_url: https://zeri-admin.netlify.app/.netlify/git/github
 
 media_folder: "uploads"
 public_folder: "uploads"
