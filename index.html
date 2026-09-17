@@ -126,7 +126,7 @@
     letter-spacing:0.08em;color:var(--paper);background:rgba(23,20,15,0.55);
     padding:4px 9px;border:1px solid var(--line-strong);
   }
-  #works, #feedback, #contact{scroll-margin-top:88px;}
+  #about, #works, #feedback, #contact{scroll-margin-top:88px;}
 
   /* ---------- works / category grid ---------- */
   .works{padding:70px 0 90px;border-top:1px solid var(--line);}
@@ -199,7 +199,7 @@
 
   /* ---------- contact ---------- */
   .contact{padding:80px 0 60px;border-top:1px solid var(--line);}
-  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
   .contact h2{font-size:clamp(26px,3.4vw,38px);font-style:italic;font-weight:400;margin:16px 0 18px;}
   .contact p{color:var(--paper-dim);font-size:15px;max-width:44ch;}
   .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
@@ -317,24 +317,21 @@
         <span class="brand-en">Studio of Light</span>
       </a>
       <nav class="site-nav">
+        <a href="#about">關於澤日</a>
         <a href="#works">作品</a>
+        <a href="#feedback">顧客回饋</a>
         <a href="#contact">聯絡</a>
       </nav>
     </div>
   </header>
 
   <main id="view-home">
-    <section class="hero">
+    <section class="hero" id="about">
       <div class="wrap">
         <div class="hero-copy fade-in">
           <span class="eyebrow">About · 關於澤日影像</span>
           <h1>「排山倒海,<br>幸好來日與你。」</h1>
           <p>澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
-          <dl class="spec-sheet">
-            <div class="spec-row"><dt>拍攝範圍</dt><dd>高山 / 海外自助婚紗・婚禮紀錄・空間攝影・活動紀錄</dd></div>
-            <div class="spec-row"><dt>服務地區</dt><dd>• 台灣全區：全台皆可服務，並以「合歡山及高海拔山區」為特色戶外拍攝據點。
-• 海外隨行：提供定期日本海外檔期（如京都、仙台自助婚紗），亦接受其他國家預約隨行拍攝。</dd></div>
-          </dl>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#works">瀏覽作品集</a>
           </div>
@@ -375,6 +372,11 @@
           <span class="eyebrow">Contact · 開始合作</span>
           <h2>預約你的<br>拍攝計畫。</h2>
           <p>無論是婚禮紀錄、品牌形象或個人寫真,歡迎先聊聊你想留下的畫面。</p>
+          <dl class="spec-sheet">
+            <div class="spec-row"><dt>拍攝範圍</dt><dd>高山 / 海外自助婚紗・婚禮紀錄・空間攝影・活動紀錄</dd></div>
+            <div class="spec-row"><dt>服務地區</dt><dd>• 台灣全區：全台皆可服務，並以「合歡山及高海拔山區」為特色戶外拍攝據點。
+• 海外隨行：提供定期日本海外檔期（如京都、仙台自助婚紗），亦接受其他國家預約隨行拍攝。</dd></div>
+          </dl>
         </div>
         <ul class="contact-list">
           <li><a href="mailto:dannie31044@gmail.com">dannie31044@gmail.com <span>Email</span></a></li>
@@ -761,7 +763,7 @@
     var m = hash.match(/^#\/c\/([a-z0-9]+)/i);
     if (m){ showCategory(m[1]); return; }
     showHome();
-    var anchor = hash.match(/^#(works|feedback|contact)$/);
+    var anchor = hash.match(/^#(about|works|feedback|contact)$/);
     if (anchor){
       requestAnimationFrame(function(){
         var el = document.getElementById(anchor[1]);
