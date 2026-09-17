@@ -199,10 +199,10 @@
 
   /* ---------- contact ---------- */
   .contact{padding:80px 0 60px;border-top:1px solid var(--line);}
-  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .contact .wrap{max-width:640px;}
   .contact h2{font-size:clamp(26px,3.4vw,38px);font-style:italic;font-weight:400;margin:16px 0 18px;}
   .contact p{color:var(--paper-dim);font-size:15px;max-width:44ch;}
-  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .contact-list{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
   .contact-list a{
     display:flex;justify-content:space-between;text-decoration:none;
     font-size:16px;padding-bottom:12px;border-bottom:1px solid var(--line);
@@ -289,7 +289,7 @@
   .lb-tag{border:1px solid var(--line-strong);padding:4px 10px;color:var(--brass-bright);}
 
   @media(max-width:900px){
-    .hero .wrap, .contact .wrap{grid-template-columns:1fr;}
+    .hero .wrap{grid-template-columns:1fr;}
     .hero-frame{margin-top:32px;}
     .cat-grid{grid-template-columns:1fr;grid-auto-rows:300px;}
     .cat-tile:first-child{grid-column:auto;grid-row:auto;}
@@ -381,7 +381,6 @@
         <ul class="contact-list">
           <li><a href="mailto:dannie31044@gmail.com">dannie31044@gmail.com <span>Email</span></a></li>
           <li><a href="https://www.instagram.com/zerih_studio_?stkn=eHl1c3Jybnl0Y3Fp&utm_source=qr" target="_blank" rel="noopener">@zerih_studio_ <span>Instagram</span></a></li>
-          <li><a href="tel:+886227000000">+886 2 2700 0000 <span>Studio Line</span></a></li>
         </ul>
       </div>
     </section>
