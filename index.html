@@ -324,13 +324,12 @@
       <div class="wrap">
         <div class="hero-copy fade-in">
           <span class="eyebrow">About · 關於澤日影像</span>
-          <h1>以真實的光,<br>說一個<em>誠實</em>的故事。</h1>
-          <p>澤日影像成立於對底片與暗房的迷戀——相信影像最動人的部分,不是完美,而是真實的顆粒與呼吸感。我們遊走於婚禮現場、山海之間與城市街角,用鏡頭記錄那些一閃即逝的瞬間,並在後製時保留它們原本的溫度。</p>
+          <h1>「排山倒海,<br>幸好來日與<em>你</em>。」</h1>
+          <p>澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
           <dl class="spec-sheet">
-            <div class="spec-row"><dt>拍攝理念</dt><dd>自然光優先,忠於現場氛圍與真實情緒</dd></div>
-            <div class="spec-row"><dt>拍攝範圍</dt><dd>婚禮・人像・風景・商業・活動紀錄</dd></div>
-            <div class="spec-row"><dt>服務地區</dt><dd>台灣本島為主,可安排海外採訪拍攝</dd></div>
-            <div class="spec-row"><dt>交件形式</dt><dd>高解析原檔,附底片質感校色版本</dd></div>
+            <div class="spec-row"><dt>拍攝範圍</dt><dd>高山 / 海外自助婚紗・婚禮紀錄・空間攝影・活動紀錄</dd></div>
+            <div class="spec-row"><dt>服務地區</dt><dd>• 台灣全區：全台皆可服務，並以「合歡山及高海拔山區」為特色戶外拍攝據點。
+• 海外隨行：提供定期日本海外檔期（如京都、仙台自助婚紗），亦接受其他國家預約隨行拍攝。</dd></div>
           </dl>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#works">瀏覽作品集</a>
@@ -622,6 +621,7 @@
     section.style.display = 'none';
 
     var enLabelHtml = cat.en ? '<span class="en-label">'+cat.en+'</span>' : '';
+    var descHtml = cat.tagline ? '<p class="desc">'+cat.tagline+'</p>' : '';
     var rollMetaHtml = cat.photos.length ? '<p class="roll-meta">共 '+cat.photos.length+' 張作品</p>' : '';
     var videoHtml = cat.videoUrl ? '<a class="btn btn-ghost video-link" href="'+cat.videoUrl+'" target="_blank" rel="noopener">&#9654; 觀看動態影片</a>' : '';
 
@@ -632,7 +632,7 @@
         '<div class="breadcrumb"><a href="#/">首頁</a><span>/</span><span>'+cat.zh+'</span></div>' +
         enLabelHtml +
         '<h1>'+cat.zh+'</h1>' +
-        '<p class="desc">'+cat.tagline+'</p>' +
+        descHtml +
         rollMetaHtml +
         videoHtml +
         (cat.photos.length ? '<div class="filters"></div>' : '') +
