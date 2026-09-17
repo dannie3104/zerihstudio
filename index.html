@@ -84,7 +84,7 @@
 
   /* ---------- hero ---------- */
   .hero{padding:76px 0 96px;}
-  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:start;}
   .hero-copy h1{font-size:clamp(30px,4.2vw,50px);font-weight:400;line-height:1.28;margin:22px 0 26px;color:var(--paper);}
   .hero-copy h1 em{font-style:italic;color:var(--brass-bright);}
   .hero-copy p{max-width:46ch;color:var(--paper-dim);font-size:15.5px;}
@@ -126,7 +126,7 @@
     letter-spacing:0.08em;color:var(--paper);background:rgba(23,20,15,0.55);
     padding:4px 9px;border:1px solid var(--line-strong);
   }
-  #works, #feedback, #about, #contact{scroll-margin-top:88px;}
+  #works, #feedback, #contact{scroll-margin-top:88px;}
 
   /* ---------- works / category grid ---------- */
   .works{padding:70px 0 90px;border-top:1px solid var(--line);}
@@ -188,18 +188,14 @@
     .feedback-row{max-width:92%;}
   }
 
-  /* ---------- about ---------- */
-  .about{padding:80px 0;border-top:1px solid var(--line);}
-  .about .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;}
-  .about-text h2{font-size:clamp(24px,3vw,32px);margin:16px 0 20px;font-style:italic;font-weight:400;}
-  .about-text p{color:var(--paper-dim);font-size:15px;max-width:52ch;}
-  .spec-sheet{border-top:1px solid var(--line);}
+  /* ---------- spec sheet (inside hero) ---------- */
+  .spec-sheet{border-top:1px solid var(--line);margin:28px 0 0;}
   .spec-row{
-    display:grid;grid-template-columns:150px 1fr;gap:20px;
-    padding:18px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:120px 1fr;gap:16px;
+    padding:16px 0;border-bottom:1px solid var(--line);
   }
   .spec-row dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;color:var(--brass);text-transform:uppercase;}
-  .spec-row dd{margin:0;font-size:14.5px;color:var(--paper);}
+  .spec-row dd{margin:0;font-size:14.5px;color:var(--paper);white-space:pre-line;}
 
   /* ---------- contact ---------- */
   .contact{padding:80px 0 60px;border-top:1px solid var(--line);}
@@ -288,15 +284,14 @@
   .lb-tag{border:1px solid var(--line-strong);padding:4px 10px;color:var(--brass-bright);}
 
   @media(max-width:900px){
-    .hero .wrap, .about .wrap, .contact .wrap{grid-template-columns:1fr;}
-    .hero-frame{margin-top:20px;}
+    .hero .wrap, .contact .wrap{grid-template-columns:1fr;}
+    .hero-frame{margin-top:32px;}
     .cat-grid{grid-template-columns:1fr;grid-auto-rows:300px;}
     .cat-tile:first-child{grid-column:auto;grid-row:auto;}
     .site-nav{gap:20px;}
   }
   @media(max-width:560px){
     .wrap{padding:0 20px;}
-    .site-nav a:nth-child(3){display:none;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -318,7 +313,6 @@
       </a>
       <nav class="site-nav">
         <a href="#works">作品</a>
-        <a href="#about">關於</a>
         <a href="#contact">聯絡</a>
       </nav>
     </div>
@@ -328,12 +322,17 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-copy fade-in">
-          <span class="eyebrow">Selected Works · 精選作品集</span>
-          <h1>光,經過鏡頭,<br>顯影成<em>影像</em>。</h1>
-          <p>澤日影像記錄婚禮、風景、人像與商業現場的真實瞬間,以底片般細膩的層次與顆粒感,留下值得反覆回看的畫面。</p>
+          <span class="eyebrow">About · 關於澤日影像</span>
+          <h1>以真實的光,<br>說一個<em>誠實</em>的故事。</h1>
+          <p>澤日影像成立於對底片與暗房的迷戀——相信影像最動人的部分,不是完美,而是真實的顆粒與呼吸感。我們遊走於婚禮現場、山海之間與城市街角,用鏡頭記錄那些一閃即逝的瞬間,並在後製時保留它們原本的溫度。</p>
+          <dl class="spec-sheet">
+            <div class="spec-row"><dt>拍攝理念</dt><dd>自然光優先,忠於現場氛圍與真實情緒</dd></div>
+            <div class="spec-row"><dt>拍攝範圍</dt><dd>婚禮・人像・風景・商業・活動紀錄</dd></div>
+            <div class="spec-row"><dt>服務地區</dt><dd>台灣本島為主,可安排海外採訪拍攝</dd></div>
+            <div class="spec-row"><dt>交件形式</dt><dd>高解析原檔,附底片質感校色版本</dd></div>
+          </dl>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#works">瀏覽作品集</a>
-            <a class="btn btn-ghost" href="#about">關於澤日影像</a>
           </div>
         </div>
         <div class="hero-frame fade-in">
@@ -365,21 +364,6 @@
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="wrap">
-        <div class="about-text">
-          <span class="eyebrow">About · 關於澤日影像</span>
-          <h2>以真實的光,說一個誠實的故事。</h2>
-          <p>澤日影像成立於對底片與暗房的迷戀——相信影像最動人的部分,不是完美,而是真實的顆粒與呼吸感。我們遊走於婚禮現場、山海之間與城市街角,用鏡頭記錄那些一閃即逝的瞬間,並在後製時保留它們原本的溫度。</p>
-        </div>
-        <dl class="spec-sheet">
-          <div class="spec-row"><dt>拍攝理念</dt><dd>自然光優先,忠於現場氛圍與真實情緒</dd></div>
-          <div class="spec-row"><dt>拍攝範圍</dt><dd>婚禮・人像・風景・商業・活動紀錄</dd></div>
-          <div class="spec-row"><dt>服務地區</dt><dd>台灣本島為主,可安排海外採訪拍攝</dd></div>
-          <div class="spec-row"><dt>交件形式</dt><dd>高解析原檔,附底片質感校色版本</dd></div>
-        </dl>
-      </div>
-    </section>
 
     <section class="contact" id="contact">
       <div class="wrap">
@@ -734,7 +718,7 @@
     var m = hash.match(/^#\/c\/([a-z0-9]+)/i);
     if (m){ showCategory(m[1]); return; }
     showHome();
-    var anchor = hash.match(/^#(works|feedback|about|contact)$/);
+    var anchor = hash.match(/^#(works|feedback|contact)$/);
     if (anchor){
       requestAnimationFrame(function(){
         var el = document.getElementById(anchor[1]);
