@@ -234,6 +234,8 @@
   .cat-header .video-link{margin-top:18px;}
   .cat-header .video-embed{position:relative;width:100%;max-width:720px;aspect-ratio:16/9;margin:20px 0 4px;background:#000;border:1px solid var(--line-strong);}
   .cat-header .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .cat-header .video-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;}
+  .cat-header .video-tabs .filter-pill{padding:7px 13px;font-size:11px;}
 
   .filters{display:flex;flex-wrap:wrap;gap:10px;padding:28px 0 0;}
   .filter-pill{
@@ -630,6 +632,28 @@
     return '<a class="btn btn-ghost video-link" href="'+url+'" target="_blank" rel="noopener">&#9654; 觀看動態影片</a>';
   }
 
+  function buildVideoSection(cat){
+    var videos = (cat.videos && cat.videos.length) ? cat.videos : (cat.videoUrl ? [{label:'', url:cat.videoUrl}] : []);
+    if (!videos.length) return { html:'', wire:function(){} };
+    if (videos.length === 1) return { html: embedVideoHtml(videos[0].url), wire:function(){} };
+    var tabsHtml = videos.map(function(v, i){
+      return '<button type="button" class="filter-pill'+(i===0?' active':'')+'" data-vidx="'+i+'">'+(v.label || ('影片 '+(i+1)))+'</button>';
+    }).join('');
+    var html = '<div class="video-tabs">'+tabsHtml+'</div><div class="video-embed-wrap">'+embedVideoHtml(videos[0].url)+'</div>';
+    var wire = function(container){
+      var tabs = container.querySelectorAll('.video-tabs .filter-pill');
+      var wrap = container.querySelector('.video-embed-wrap');
+      tabs.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          tabs.forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          wrap.innerHTML = embedVideoHtml(videos[+btn.dataset.vidx].url);
+        });
+      });
+    };
+    return { html: html, wire: wire };
+  }
+
   function buildCategorySection(cat){
     var section = document.createElement('div');
     section.className = 'cat-section';
@@ -638,7 +662,7 @@
     var enLabelHtml = cat.en ? '<span class="en-label">'+cat.en+'</span>' : '';
     var descHtml = cat.tagline ? '<p class="desc">'+cat.tagline+'</p>' : '';
     var rollMetaHtml = cat.photos.length ? '<p class="roll-meta">共 '+cat.photos.length+' 張作品</p>' : '';
-    var videoHtml = embedVideoHtml(cat.videoUrl);
+    var videoSection = buildVideoSection(cat);
 
     var header = document.createElement('div');
     header.className = 'cat-header';
@@ -649,10 +673,11 @@
         '<h1>'+cat.zh+'</h1>' +
         descHtml +
         rollMetaHtml +
-        videoHtml +
+        videoSection.html +
         (cat.photos.length ? '<div class="filters"></div>' : '') +
       '</div>';
     section.appendChild(header);
+    videoSection.wire(header);
 
     var bodyWrap = document.createElement('div');
     bodyWrap.className = 'wrap';
@@ -851,7 +876,7 @@
     var testimonialData = (results[2].testimonials || []).slice().sort(function(a,b){ return a.order - b.order; });
     var catsById = {};
     var CATEGORIES = catData.slice().sort(function(a,b){ return a.order - b.order; }).map(function(c){
-      var cat = { id:c.id, zh:c.zh, en:c.en, tagline:c.tagline, tintHex:c.tintHex, videoUrl:c.videoUrl, photos:[] };
+      var cat = { id:c.id, zh:c.zh, en:c.en, tagline:c.tagline, tintHex:c.tintHex, videoUrl:c.videoUrl, videos:c.videos, photos:[] };
       catsById[c.id] = cat;
       return cat;
     });
