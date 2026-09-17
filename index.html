@@ -90,6 +90,9 @@
     padding:8px 0;display:none;z-index:50;
     box-shadow:0 18px 40px rgba(0,0,0,0.45);
   }
+  .works-panel::before{
+    content:'';position:absolute;top:-14px;left:0;right:0;height:14px;
+  }
   .nav-works.open .works-panel{display:block;}
   @media(hover:hover) and (pointer:fine){
     .nav-works:hover .works-panel{display:block;}
