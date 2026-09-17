@@ -1,12 +1,12 @@
 {
   "categories": [
-    { "id": "wedding", "zh": "高山婚紗", "en": "Weddings", "tagline": "", "tintHex": "#b98577", "videoUrl": "", "order": 1 },
+    { "id": "wedding", "zh": "高山婚紗", "en": "", "tagline": "", "tintHex": "#b98577", "videoUrl": "", "order": 1 },
     { "id": "cmty0ir1kayci", "zh": "日本自助婚紗", "en": "", "tagline": "", "tintHex": "#a68a5b", "videoUrl": "", "order": 2 },
     { "id": "landscape", "zh": "婚禮紀錄", "en": "", "tagline": "", "tintHex": "#7c8d68", "videoUrl": "", "order": 2 },
     { "id": "portrait", "zh": "婚禮動態紀錄", "en": "", "tagline": "", "tintHex": "#b99878", "videoUrl": "https://youtu.be/xSLY5fUEm0E?si=a3hrfHa1xRPbp-dB", "order": 3 },
-    { "id": "street", "zh": "空間攝影", "en": "Street", "tagline": "", "tintHex": "#9a9d95", "videoUrl": "", "order": 4 },
-    { "id": "commercial", "zh": "抓周儀式", "en": "Commercial", "tagline": "", "tintHex": "#7c8fa0", "videoUrl": "", "order": 5 },
-    { "id": "event", "zh": "登記散步寫真", "en": "Events", "tagline": "", "tintHex": "#8d7596", "videoUrl": "", "order": 6 },
+    { "id": "street", "zh": "空間攝影", "en": "", "tagline": "", "tintHex": "#9a9d95", "videoUrl": "", "order": 4 },
+    { "id": "commercial", "zh": "抓周儀式", "en": "", "tagline": "", "tintHex": "#7c8fa0", "videoUrl": "", "order": 5 },
+    { "id": "event", "zh": "登記散步寫真", "en": "", "tagline": "", "tintHex": "#8d7596", "videoUrl": "", "order": 6 },
     { "id": "cmty0j7fzvvhn", "zh": "孕婦寫真", "en": "", "tagline": "", "tintHex": "#5c8a82", "videoUrl": "", "order": 7 },
     { "id": "cmu59342st397", "zh": "活動紀錄", "en": "", "tagline": "", "tintHex": "#9c8f6f", "videoUrl": "", "order": 8 }
   ]
