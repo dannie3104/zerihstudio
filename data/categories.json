@@ -1,12 +1,12 @@
 {
   "categories": [
-    { "id": "wedding", "zh": "婚禮", "en": "Weddings", "tagline": "從迎娶到晚宴,記錄真實流動的情感瞬間。", "tintHex": "#b98577", "order": 1 },
-    { "id": "cmty0ir1kayci", "zh": "日本自助婚紗", "en": "", "tagline": "跨海取景,在異地光線裡留下兩人剛剛好的自由感。", "tintHex": "#a68a5b", "order": 2 },
-    { "id": "landscape", "zh": "風景", "en": "Landscapes", "tagline": "山岳、海岸與城市天際線,追逐光線變化的當下。", "tintHex": "#7c8d68", "order": 3 },
-    { "id": "portrait", "zh": "人像", "en": "Portraits", "tagline": "自然光與棚燈之間,捕捉最放鬆的表情。", "tintHex": "#b99878", "order": 4 },
-    { "id": "street", "zh": "街拍", "en": "Street", "tagline": "城市紋理與人文瞬間,黑白與色彩並存的觀察。", "tintHex": "#9a9d95", "order": 5 },
-    { "id": "commercial", "zh": "商業", "en": "Commercial", "tagline": "產品、空間與品牌形象,精準而乾淨的商業視角。", "tintHex": "#7c8fa0", "order": 6 },
-    { "id": "event", "zh": "活動紀錄", "en": "Events", "tagline": "演唱會到企業活動,記錄現場能量與細節。", "tintHex": "#8d7596", "order": 7 },
-    { "id": "cmty0j7fzvvhn", "zh": "寵物寫真", "en": "", "tagline": "捕捉毛孩最放鬆的姿態,留住牠們日常裡最真實的表情。", "tintHex": "#5c8a82", "order": 8 }
+    { "id": "wedding", "zh": "婚禮", "en": "Weddings", "tagline": "從迎娶到晚宴,記錄真實流動的情感瞬間。", "tintHex": "#b98577", "videoUrl": "", "order": 1 },
+    { "id": "cmty0ir1kayci", "zh": "日本自助婚紗", "en": "", "tagline": "跨海取景,在異地光線裡留下兩人剛剛好的自由感。", "tintHex": "#a68a5b", "videoUrl": "", "order": 2 },
+    { "id": "landscape", "zh": "風景", "en": "Landscapes", "tagline": "山岳、海岸與城市天際線,追逐光線變化的當下。", "tintHex": "#7c8d68", "videoUrl": "", "order": 3 },
+    { "id": "portrait", "zh": "人像", "en": "Portraits", "tagline": "自然光與棚燈之間,捕捉最放鬆的表情。", "tintHex": "#b99878", "videoUrl": "", "order": 4 },
+    { "id": "street", "zh": "街拍", "en": "Street", "tagline": "城市紋理與人文瞬間,黑白與色彩並存的觀察。", "tintHex": "#9a9d95", "videoUrl": "", "order": 5 },
+    { "id": "commercial", "zh": "商業", "en": "Commercial", "tagline": "產品、空間與品牌形象,精準而乾淨的商業視角。", "tintHex": "#7c8fa0", "videoUrl": "", "order": 6 },
+    { "id": "event", "zh": "活動紀錄", "en": "Events", "tagline": "演唱會到企業活動,記錄現場能量與細節。", "tintHex": "#8d7596", "videoUrl": "", "order": 7 },
+    { "id": "cmty0j7fzvvhn", "zh": "寵物寫真", "en": "", "tagline": "捕捉毛孩最放鬆的姿態,留住牠們日常裡最真實的表情。", "tintHex": "#5c8a82", "videoUrl": "", "order": 8 }
   ]
 }

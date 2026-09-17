@@ -27,6 +27,7 @@ collections:
               - { label: "英文名稱", name: "en", widget: "string", required: false }
               - { label: "介紹句", name: "tagline", widget: "text" }
               - { label: "主題色", name: "tintHex", widget: "color", hint: "沒有真實照片時,首頁方塊會用這個顏色顯示抽象光影當作示意圖" }
+              - { label: "影片網址(選填)", name: "videoUrl", widget: "string", required: false, hint: "YouTube、Vimeo 等外部連結,填了分類頁面會出現「觀看動態影片」按鈕" }
               - { label: "排序", name: "order", widget: "number", value_type: "int", hint: "數字小的排前面" }
 
   - name: "photos"
