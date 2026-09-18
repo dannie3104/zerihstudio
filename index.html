@@ -361,6 +361,7 @@
           <a href="#works" class="nav-trigger" id="works-trigger">作品<span class="nav-en">/Portfolio</span></a>
           <div class="works-panel" id="works-panel"></div>
         </div>
+        <a href="#faq">常見問題<span class="nav-en">/FAQ</span></a>
         <a href="#contact">聯絡<span class="nav-en">/Contact Us</span></a>
       </nav>
     </div>
@@ -578,10 +579,11 @@
       if (cat.photos[ci].isCover){ coverPhoto = cat.photos[ci]; break; }
     }
     if (!coverPhoto && hasPhoto) coverPhoto = cat.photos[0];
+    var coverPos = (coverPhoto && coverPhoto.coverPos != null) ? coverPhoto.coverPos : 50;
     var tile = document.createElement('div');
     tile.className = 'cat-tile';
     var mediaHtml = hasPhoto
-      ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'">'
+      ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'" style="object-position:50% '+coverPos+'%;">'
       : '<canvas class="tile-media" width="1000" height="750"></canvas>';
     var countText = hasPhoto ? (cat.photos.length + ' 張作品') : '即將上線';
     var enHtml = cat.en ? '<span class="en">'+cat.en+'</span>' : '';
@@ -836,7 +838,7 @@
     var m = hash.match(/^#\/c\/([a-z0-9]+)(?:\?tag=([^&]*))?/i);
     if (m){ showCategory(m[1], m[2] ? decodeURIComponent(m[2]) : null); return; }
     showHome();
-    var anchor = hash.match(/^#(about|works|contact)$/);
+    var anchor = hash.match(/^#(about|works|contact|faq)$/);
     if (anchor){
       requestAnimationFrame(function(){
         var el = document.getElementById(anchor[1]);
