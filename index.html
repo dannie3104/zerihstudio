@@ -231,7 +231,7 @@
 
   /* ---------- contact ---------- */
   .contact{padding:80px 0 60px;border-top:1px solid var(--line);}
-  .contact .wrap{max-width:640px;}
+  .contact .wrap{max-width:640px;margin-left:0;}
   .contact h2{font-size:clamp(26px,3.4vw,38px);font-style:italic;font-weight:400;margin:16px 0 18px;}
   .contact p{color:var(--paper-dim);font-size:15px;max-width:44ch;}
   .contact-list{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
@@ -362,7 +362,9 @@
   }
   @media(max-width:560px){
     .wrap{padding:0 20px;}
-    .site-nav .nav-en{display:none;}
+    .site-nav{gap:14px;}
+    .site-nav a{font-size:12px;}
+    .site-nav .nav-en{display:block;font-size:9px;margin-top:1px;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -453,28 +455,7 @@
           <span class="en-label">Frequently Asked</span>
           <h2>拍攝前,你可能想知道。</h2>
         </div>
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>如何預約拍攝檔期?</summary>
-            <p>透過 Email 或 Instagram 私訊聯絡,告知你想要的拍攝日期與需求,確認檔期沒有衝突後,會請你完成訂金以保留時段。</p>
-          </details>
-          <details class="faq-item">
-            <summary>需要支付訂金嗎?</summary>
-            <p>是的,確認檔期後需支付訂金以完成預約,訂金會從總拍攝費用中扣除,詳細金額會依拍攝類型與時長個別報價。</p>
-          </details>
-          <details class="faq-item">
-            <summary>戶外拍攝遇到壞天氣怎麼辦?</summary>
-            <p>高山與海外拍攝會提前留意天氣狀況,若天候真的不允許,會與你討論改期或調整拍攝地點,盡量不影響整體規劃。</p>
-          </details>
-          <details class="faq-item">
-            <summary>拍攝後多久可以收到照片?</summary>
-            <p>一般約 2 至 4 週內完成精修交付,實際時間會依當期檔期量微調,會在拍攝前跟你說明預估時程。</p>
-          </details>
-          <details class="faq-item">
-            <summary>可以指定海外拍攝地點嗎?</summary>
-            <p>可以,目前固定安排日本(京都、仙台)海外檔期,也接受其他地點的隨行拍攝討論,歡迎先聊聊你的想法。</p>
-          </details>
-        </div>
+        <div class="faq-list" id="faq-list"></div>
       </div>
     </section>
   </main>
@@ -599,6 +580,14 @@
     ctx.fillStyle = getNoisePattern(ctx);
     ctx.fillRect(0,0,w,h);
     ctx.globalAlpha = 1;
+  }
+
+  function renderFaq(FAQ){
+    var list = document.getElementById('faq-list');
+    if (!list) return;
+    list.innerHTML = FAQ.map(function(f){
+      return '<details class="faq-item"><summary>'+f.question+'</summary><p>'+f.answer+'</p></details>';
+    }).join('');
   }
 
   function renderSite(CATEGORIES){
@@ -1072,10 +1061,13 @@
   /* ---------- load content from data/*.json (editable via /admin CMS) ---------- */
   Promise.all([
     fetch('data/categories.json').then(function(r){ return r.json(); }),
-    fetch('data/photos.json').then(function(r){ return r.json(); })
+    fetch('data/photos.json').then(function(r){ return r.json(); }),
+    fetch('data/faq.json').then(function(r){ return r.json(); })
   ]).then(function(results){
     var catData = results[0].categories || [];
     var photoData = results[1].photos || [];
+    var faqData = (results[2].faq || []).slice().sort(function(a,b){ return a.order - b.order; });
+    renderFaq(faqData);
     var catsById = {};
     var CATEGORIES = catData.slice().sort(function(a,b){ return a.order - b.order; }).map(function(c){
       var cat = { id:c.id, zh:c.zh, en:c.en, tagline:c.tagline, tintHex:c.tintHex, videoUrl:c.videoUrl, videos:c.videos, photos:[] };
