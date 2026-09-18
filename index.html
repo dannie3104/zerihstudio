@@ -81,6 +81,8 @@
     transition:color .25s ease, border-color .25s ease;
   }
   .site-nav a:hover{color:var(--paper);border-color:var(--brass-soft);}
+  .site-nav .nav-en{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.02em;}
+  .site-nav a:hover .nav-en{color:var(--paper-dim);}
 
   .nav-works{position:relative;}
   .works-panel{
@@ -164,7 +166,7 @@
     letter-spacing:0.08em;color:var(--paper);background:rgba(23,20,15,0.55);
     padding:4px 9px;border:1px solid var(--line-strong);
   }
-  #about, #works, #contact{scroll-margin-top:88px;}
+  #about, #works, #contact, #faq{scroll-margin-top:88px;}
 
   /* ---------- works / category grid ---------- */
   .works{padding:70px 0 90px;border-top:1px solid var(--line);}
@@ -231,6 +233,21 @@
   }
   .contact-list a:hover{border-color:var(--brass);}
   .contact-list span{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.08em;}
+
+  .faq{padding:70px 0 100px;border-top:1px solid var(--line);}
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+  .faq-item summary{
+    cursor:pointer;list-style:none;font-size:16px;color:var(--paper);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+';font-family:var(--font-mono);color:var(--brass);font-size:18px;
+    flex:none;transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{margin:14px 0 0;color:var(--paper-dim);font-size:14.5px;line-height:1.7;max-width:64ch;}
 
   .site-footer{border-top:1px solid var(--line);padding:26px 0;}
   .site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
@@ -318,6 +335,7 @@
   }
   @media(max-width:560px){
     .wrap{padding:0 20px;}
+    .site-nav .nav-en{display:none;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -338,12 +356,12 @@
         <span class="brand-en">Studio of Light</span>
       </a>
       <nav class="site-nav">
-        <a href="#about">關於澤日</a>
+        <a href="#about">關於澤日<span class="nav-en">/About Us</span></a>
         <div class="nav-item nav-works" id="nav-works-item">
-          <a href="#works" class="nav-trigger" id="works-trigger">作品</a>
+          <a href="#works" class="nav-trigger" id="works-trigger">作品<span class="nav-en">/Portfolio</span></a>
           <div class="works-panel" id="works-panel"></div>
         </div>
-        <a href="#contact">聯絡</a>
+        <a href="#contact">聯絡<span class="nav-en">/Contact Us</span></a>
       </nav>
     </div>
   </header>
@@ -354,7 +372,7 @@
         <div class="hero-copy fade-in">
           <span class="eyebrow">About · 關於澤日影像</span>
           <span class="en-label">Mountains, Tides &amp; You</span>
-          <h1>「排山倒海,<br>幸好來日與你。」</h1>
+          <h1>「排山倒海,幸好來日與你。」</h1>
           <p>澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#works">瀏覽作品集</a>
@@ -397,6 +415,38 @@
           <li><a href="mailto:dannie31044@gmail.com">dannie31044@gmail.com <span>Email</span></a></li>
           <li><a href="https://www.instagram.com/zerih_studio_?stkn=eHl1c3Jybnl0Y3Fp&utm_source=qr" target="_blank" rel="noopener">@zerih_studio_ <span>Instagram</span></a></li>
         </ul>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">FAQ · 常見問題</span>
+          <span class="en-label">Frequently Asked</span>
+          <h2>拍攝前,你可能想知道。</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>如何預約拍攝檔期?</summary>
+            <p>透過 Email 或 Instagram 私訊聯絡,告知你想要的拍攝日期與需求,確認檔期沒有衝突後,會請你完成訂金以保留時段。</p>
+          </details>
+          <details class="faq-item">
+            <summary>需要支付訂金嗎?</summary>
+            <p>是的,確認檔期後需支付訂金以完成預約,訂金會從總拍攝費用中扣除,詳細金額會依拍攝類型與時長個別報價。</p>
+          </details>
+          <details class="faq-item">
+            <summary>戶外拍攝遇到壞天氣怎麼辦?</summary>
+            <p>高山與海外拍攝會提前留意天氣狀況,若天候真的不允許,會與你討論改期或調整拍攝地點,盡量不影響整體規劃。</p>
+          </details>
+          <details class="faq-item">
+            <summary>拍攝後多久可以收到照片?</summary>
+            <p>一般約 2 至 4 週內完成精修交付,實際時間會依當期檔期量微調,會在拍攝前跟你說明預估時程。</p>
+          </details>
+          <details class="faq-item">
+            <summary>可以指定海外拍攝地點嗎?</summary>
+            <p>可以,目前固定安排日本(京都、仙台)海外檔期,也接受其他地點的隨行拍攝討論,歡迎先聊聊你的想法。</p>
+          </details>
+        </div>
       </div>
     </section>
   </main>
