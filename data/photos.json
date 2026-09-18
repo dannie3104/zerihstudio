@@ -223,7 +223,8 @@
                        "order":  3,
                        "file":  "photos/cmty0j7fzvvhn/pcay8rvyhhxnys34yntc.jpg",
                        "isCover":  true,
-                       "isFeatured":  false
+                       "isFeatured":  false,
+                       "coverPos":  75
                    },
                    {
                        "id":  "61apir2c5us2gfolgchx",
@@ -242,6 +243,24 @@
                        "file":  "photos/cmty0j7fzvvhn/shdfxob48jlwzxmr5rgi.jpg",
                        "isCover":  false,
                        "isFeatured":  true
+                   },
+                   {
+                       "id":  "qqqvwc46z7u6767roxki",
+                       "category":  "cmty0j7fzvvhn",
+                       "tag":  "",
+                       "order":  6,
+                       "file":  "photos/cmty0j7fzvvhn/qqqvwc46z7u6767roxki.jpg",
+                       "isCover":  false,
+                       "isFeatured":  false
+                   },
+                   {
+                       "id":  "aiqjwwhojruv7qo2ppho",
+                       "category":  "cmty0j7fzvvhn",
+                       "tag":  "",
+                       "order":  7,
+                       "file":  "photos/cmty0j7fzvvhn/aiqjwwhojruv7qo2ppho.jpg",
+                       "isCover":  false,
+                       "isFeatured":  false
                    },
                    {
                        "id":  "zoo3ngg0f0qi8ggp2buz",
@@ -694,6 +713,25 @@
                        "isFeatured":  false
                    },
                    {
+                       "id":  "a5hvyv9yl33c2v7ybnfu",
+                       "category":  "event",
+                       "tag":  "",
+                       "order":  1,
+                       "file":  "photos/event/a5hvyv9yl33c2v7ybnfu.jpg",
+                       "isCover":  true,
+                       "isFeatured":  false,
+                       "coverPos":  80
+                   },
+                   {
+                       "id":  "kyifxg4b3c9gcivtsfqa",
+                       "category":  "event",
+                       "tag":  "",
+                       "order":  2,
+                       "file":  "photos/event/kyifxg4b3c9gcivtsfqa.jpg",
+                       "isCover":  false,
+                       "isFeatured":  false
+                   },
+                   {
                        "id":  "zwuebttysnm658z8indm",
                        "category":  "landscape",
                        "tag":  "",
@@ -991,20 +1029,20 @@
                        "isFeatured":  true
                    },
                    {
-                       "id":  "2hjmb9vf1n3yurqupxvq",
-                       "category":  "street",
-                       "tag":  "禾楓覓月",
-                       "order":  15,
-                       "file":  "photos/street/2hjmb9vf1n3yurqupxvq.jpg",
-                       "isCover":  false,
-                       "isFeatured":  false
-                   },
-                   {
                        "id":  "luagaelgq7thwwpgv23h",
                        "category":  "street",
                        "tag":  "禾楓覓月",
                        "order":  15,
                        "file":  "photos/street/luagaelgq7thwwpgv23h.jpg",
+                       "isCover":  false,
+                       "isFeatured":  false
+                   },
+                   {
+                       "id":  "2hjmb9vf1n3yurqupxvq",
+                       "category":  "street",
+                       "tag":  "禾楓覓月",
+                       "order":  15,
+                       "file":  "photos/street/2hjmb9vf1n3yurqupxvq.jpg",
                        "isCover":  false,
                        "isFeatured":  false
                    },
