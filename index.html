@@ -200,6 +200,15 @@
     position:absolute;top:16px;left:16px;font-family:var(--font-mono);font-size:11px;
     letter-spacing:0.1em;color:var(--paper-dim);
   }
+  .cat-tile-play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:58px;height:58px;border-radius:50%;
+    background:rgba(23,20,15,0.55);border:1px solid rgba(239,231,216,0.5);
+    color:var(--paper);font-size:18px;display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(2px);transition:background .2s ease,border-color .2s ease,transform .2s ease;
+    z-index:2;
+  }
+  .cat-tile-play:hover{background:var(--brass);border-color:var(--brass);color:var(--ink);transform:translate(-50%,-50%) scale(1.08);}
   .cat-body{position:absolute;left:22px;right:22px;bottom:18px;}
   .cat-body .en{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;color:var(--brass-bright);text-transform:uppercase;}
   .cat-body h3{font-family:var(--font-display);font-style:italic;font-size:clamp(22px,2.4vw,32px);color:var(--paper);margin:6px 0 10px;font-weight:500;}
@@ -325,6 +334,24 @@
     border-top:1px solid var(--line);padding-top:14px;letter-spacing:0.03em;
   }
   .lb-tag{border:1px solid var(--line-strong);padding:4px 10px;color:var(--brass-bright);}
+
+  /* ---------- homepage video modal ---------- */
+  .video-modal{
+    position:fixed;inset:0;background:rgba(15,13,9,0.94);z-index:110;
+    display:flex;align-items:center;justify-content:center;padding:22px;
+  }
+  .video-modal[hidden]{display:none;}
+  .video-modal-close{
+    position:absolute;top:22px;right:22px;font-size:26px;line-height:1;color:var(--paper);
+    padding:6px 10px;z-index:1;
+  }
+  .video-modal-close:hover{color:var(--brass-bright);}
+  .video-modal-inner{width:100%;max-width:960px;}
+  .video-modal-inner .video-embed{
+    position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line-strong);
+    max-width:none;margin:0;
+  }
+  .video-modal-inner .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
 
   @media(max-width:900px){
     .hero .wrap{grid-template-columns:1fr;}
@@ -480,6 +507,11 @@
   </div>
 </div>
 
+<div class="video-modal" id="video-modal" hidden>
+  <button class="video-modal-close" id="video-modal-close" aria-label="關閉">&times;</button>
+  <div class="video-modal-inner" id="video-modal-content"></div>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -587,11 +619,14 @@
       : '<canvas class="tile-media" width="1000" height="750"></canvas>';
     var countText = hasPhoto ? (cat.photos.length + ' 張作品') : '即將上線';
     var enHtml = cat.en ? '<span class="en">'+cat.en+'</span>' : '';
+    var catVideos = (cat.videos && cat.videos.length) ? cat.videos : (cat.videoUrl ? [{label:'', url:cat.videoUrl}] : []);
+    var playBtnHtml = catVideos.length ? '<button type="button" class="cat-tile-play" aria-label="播放動態影片">&#9654;</button>' : '';
     tile.innerHTML =
       '<a href="#/c/'+cat.id+'">' +
         mediaHtml +
         '<div class="cat-tile-scrim"></div>' +
         '<span class="cat-roll">ROLL '+String(idx+1).padStart(2,'0')+'</span>' +
+        playBtnHtml +
         '<div class="cat-body">' +
           enHtml +
           '<h3>'+cat.zh+'</h3>' +
@@ -602,6 +637,14 @@
     if (!hasPhoto){
       var cv = tile.querySelector('canvas');
       requestAnimationFrame(function(){ paintFrame(cv, 'tile-'+cat.id, cat.tintHex); });
+    }
+    if (catVideos.length){
+      var playBtn = tile.querySelector('.cat-tile-play');
+      playBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        openVideoModal(catVideos[0].url);
+      });
     }
   });
 
@@ -675,18 +718,39 @@
   var viewHome = document.getElementById('view-home');
   var builtCategories = {};
 
-  function embedVideoHtml(url){
+  function embedVideoHtml(url, autoplay){
     if (!url) return '';
     var yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
     if (yt){
-      return '<div class="video-embed"><iframe src="https://www.youtube.com/embed/'+yt[1]+'" title="動態影片" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>';
+      var ytSrc = 'https://www.youtube.com/embed/'+yt[1]+(autoplay ? '?autoplay=1' : '');
+      return '<div class="video-embed"><iframe src="'+ytSrc+'" title="動態影片" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>';
     }
     var vm = url.match(/vimeo\.com\/(\d+)/);
     if (vm){
-      return '<div class="video-embed"><iframe src="https://player.vimeo.com/video/'+vm[1]+'" title="動態影片" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
+      var vmSrc = 'https://player.vimeo.com/video/'+vm[1]+(autoplay ? '?autoplay=1' : '');
+      return '<div class="video-embed"><iframe src="'+vmSrc+'" title="動態影片" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
     }
     return '<a class="btn btn-ghost video-link" href="'+url+'" target="_blank" rel="noopener">&#9654; 觀看動態影片</a>';
   }
+
+  /* ---------- homepage video modal ---------- */
+  var videoModal = document.getElementById('video-modal');
+  var videoModalContent = document.getElementById('video-modal-content');
+  function openVideoModal(url){
+    videoModalContent.innerHTML = embedVideoHtml(url, true);
+    videoModal.hidden = false;
+  }
+  function closeVideoModal(){
+    videoModal.hidden = true;
+    videoModalContent.innerHTML = '';
+  }
+  document.getElementById('video-modal-close').addEventListener('click', closeVideoModal);
+  videoModal.addEventListener('click', function(e){
+    if (e.target === videoModal) closeVideoModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !videoModal.hidden) closeVideoModal();
+  });
 
   function buildVideoSection(cat){
     var videos = (cat.videos && cat.videos.length) ? cat.videos : (cat.videoUrl ? [{label:'', url:cat.videoUrl}] : []);
