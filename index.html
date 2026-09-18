@@ -164,7 +164,7 @@
     letter-spacing:0.08em;color:var(--paper);background:rgba(23,20,15,0.55);
     padding:4px 9px;border:1px solid var(--line-strong);
   }
-  #about, #works, #feedback, #contact{scroll-margin-top:88px;}
+  #about, #works, #contact{scroll-margin-top:88px;}
 
   /* ---------- works / category grid ---------- */
   .works{padding:70px 0 90px;border-top:1px solid var(--line);}
@@ -208,23 +208,6 @@
   .cat-body .meta .bar{width:0;height:1px;background:var(--brass);transition:width .4s ease;}
   .cat-tile a:hover .meta .bar{width:26px;}
 
-  /* ---------- client feedback ---------- */
-  .feedback{padding:70px 0 90px;border-top:1px solid var(--line);}
-  .feedback-list{display:flex;flex-direction:column;gap:26px;max-width:720px;margin:0 auto;}
-  .feedback-row{display:flex;flex-direction:column;max-width:78%;}
-  .feedback-row.left{align-self:flex-start;align-items:flex-start;}
-  .feedback-row.right{align-self:flex-end;align-items:flex-end;}
-  .feedback-bubble{
-    position:relative;padding:20px 22px;border:1px solid var(--line-strong);
-    background:var(--surface);border-radius:16px 16px 16px 4px;
-  }
-  .feedback-row.right .feedback-bubble{background:var(--surface-2);border-radius:16px 16px 4px 16px;}
-  .feedback-bubble p{font-family:var(--font-display);font-style:italic;font-size:16px;line-height:1.65;color:var(--paper);margin:0;text-wrap:balance;}
-  .feedback-byline{margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;color:var(--paper-faint);}
-  .feedback-byline .name{color:var(--brass-bright);}
-  @media(max-width:640px){
-    .feedback-row{max-width:92%;}
-  }
 
   /* ---------- spec sheet (inside hero) ---------- */
   .spec-sheet{border-top:1px solid var(--line);margin:28px 0 0;}
@@ -265,7 +248,7 @@
   }
   .breadcrumb a{text-decoration:none;color:var(--paper-dim);}
   .breadcrumb a:hover{color:var(--brass-bright);}
-  .cat-header .en-label{font-family:var(--font-mono);font-size:12px;letter-spacing:0.18em;color:var(--brass);text-transform:uppercase;}
+  .en-label{display:block;margin-top:4px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.18em;color:var(--brass);text-transform:uppercase;}
   .cat-header h1{font-size:clamp(32px,5vw,54px);font-style:italic;font-weight:500;margin:12px 0 16px;}
   .cat-header .desc{color:var(--paper-dim);font-size:15px;max-width:56ch;margin-bottom:8px;}
   .cat-header .roll-meta{font-family:var(--font-mono);font-size:11px;color:var(--paper-faint);letter-spacing:0.06em;}
@@ -360,7 +343,6 @@
           <a href="#works" class="nav-trigger" id="works-trigger">作品</a>
           <div class="works-panel" id="works-panel"></div>
         </div>
-        <a href="#feedback">顧客回饋</a>
         <a href="#contact">聯絡</a>
       </nav>
     </div>
@@ -371,6 +353,7 @@
       <div class="wrap">
         <div class="hero-copy fade-in">
           <span class="eyebrow">About · 關於澤日影像</span>
+          <span class="en-label">Mountains, Tides &amp; You</span>
           <h1>「排山倒海,<br>幸好來日與你。」</h1>
           <p>澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
           <div class="hero-actions">
@@ -388,21 +371,11 @@
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Browse by Theme · 瀏覽主題</span>
+          <span class="en-label">One Roll, One Gaze</span>
           <h2>一卷底片,一種凝視。</h2>
           <p>點選任一主題,進入專屬的觀景窗,依拍攝風格再次篩選。</p>
         </div>
         <div class="cat-grid" id="cat-grid"></div>
-      </div>
-    </section>
-
-    <section class="feedback" id="feedback">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">Client Words · 顧客回饋</span>
-          <h2>他們是這樣說的。</h2>
-          <p>來自曾經合作過的新人與客戶,最真實的回饋。</p>
-        </div>
-        <div class="feedback-list" id="feedback-list"></div>
       </div>
     </section>
 
@@ -411,6 +384,7 @@
       <div class="wrap">
         <div>
           <span class="eyebrow">Contact · 開始合作</span>
+          <span class="en-label">Plan Your Shoot</span>
           <h2>預約你的<br>拍攝計畫。</h2>
           <p>無論是婚禮紀錄、品牌形象或個人寫真,歡迎先聊聊你想留下的畫面。</p>
           <dl class="spec-sheet">
@@ -542,18 +516,6 @@
     ctx.fillStyle = getNoisePattern(ctx);
     ctx.fillRect(0,0,w,h);
     ctx.globalAlpha = 1;
-  }
-
-  function renderFeedback(TESTIMONIALS){
-    var feedbackList = document.getElementById('feedback-list');
-    TESTIMONIALS.forEach(function(t, i){
-      var row = document.createElement('div');
-      row.className = 'feedback-row ' + (i % 2 === 0 ? 'left' : 'right');
-      row.innerHTML =
-        '<div class="feedback-bubble"><p>' + t.quote + '</p></div>' +
-        '<div class="feedback-byline"><span class="name">' + t.name + '</span>' + (t.tag ? ' · ' + t.tag : '') + '</div>';
-      feedbackList.appendChild(row);
-    });
   }
 
   function renderSite(CATEGORIES){
@@ -824,7 +786,7 @@
     var m = hash.match(/^#\/c\/([a-z0-9]+)(?:\?tag=([^&]*))?/i);
     if (m){ showCategory(m[1], m[2] ? decodeURIComponent(m[2]) : null); return; }
     showHome();
-    var anchor = hash.match(/^#(about|works|feedback|contact)$/);
+    var anchor = hash.match(/^#(about|works|contact)$/);
     if (anchor){
       requestAnimationFrame(function(){
         var el = document.getElementById(anchor[1]);
@@ -994,12 +956,10 @@
   /* ---------- load content from data/*.json (editable via /admin CMS) ---------- */
   Promise.all([
     fetch('data/categories.json').then(function(r){ return r.json(); }),
-    fetch('data/photos.json').then(function(r){ return r.json(); }),
-    fetch('data/testimonials.json').then(function(r){ return r.json(); })
+    fetch('data/photos.json').then(function(r){ return r.json(); })
   ]).then(function(results){
     var catData = results[0].categories || [];
     var photoData = results[1].photos || [];
-    var testimonialData = (results[2].testimonials || []).slice().sort(function(a,b){ return a.order - b.order; });
     var catsById = {};
     var CATEGORIES = catData.slice().sort(function(a,b){ return a.order - b.order; }).map(function(c){
       var cat = { id:c.id, zh:c.zh, en:c.en, tagline:c.tagline, tintHex:c.tintHex, videoUrl:c.videoUrl, videos:c.videos, photos:[] };
@@ -1018,7 +978,6 @@
       });
       cat.filters = ['全部'].concat(tags);
     });
-    renderFeedback(testimonialData);
     renderSite(CATEGORIES);
   }).catch(function(err){
     var grid = document.getElementById('cat-grid');
