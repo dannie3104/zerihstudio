@@ -605,12 +605,21 @@
     var coverPos = (coverPhoto && coverPhoto.coverPos != null) ? coverPhoto.coverPos : 50;
     var tile = document.createElement('div');
     tile.className = 'cat-tile';
+    var catVideos = (cat.videos && cat.videos.length) ? cat.videos : (cat.videoUrl ? [{label:'', url:cat.videoUrl}] : []);
+    var ytThumb = '';
+    if (!hasPhoto){
+      for (var vi=0; vi<catVideos.length && !ytThumb; vi++){
+        var ytm = (catVideos[vi].url || '').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
+        if (ytm) ytThumb = 'https://i.ytimg.com/vi/'+ytm[1]+'/maxresdefault.jpg';
+      }
+    }
     var mediaHtml = hasPhoto
       ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'" style="object-position:50% '+coverPos+'%;">'
-      : '<canvas class="tile-media" width="1000" height="750"></canvas>';
-    var countText = hasPhoto ? (cat.photos.length + ' 張作品') : '即將上線';
+      : ytThumb
+        ? '<img class="tile-media tile-yt" src="'+ytThumb+'" alt="'+cat.zh+'">'
+        : '<canvas class="tile-media" width="1000" height="750"></canvas>';
+    var countText = hasPhoto ? (cat.photos.length + ' 張作品') : (catVideos.length ? (catVideos.length > 1 ? catVideos.length + ' 支影片' : '動態影片') : '即將上線');
     var enHtml = cat.en ? '<span class="en">'+cat.en+'</span>' : '';
-    var catVideos = (cat.videos && cat.videos.length) ? cat.videos : (cat.videoUrl ? [{label:'', url:cat.videoUrl}] : []);
     var playBtnHtml = catVideos.length ? '<button type="button" class="cat-tile-play" aria-label="播放動態影片">&#9654;</button>' : '';
     tile.innerHTML =
       '<a href="#/c/'+cat.id+'">' +
@@ -625,7 +634,14 @@
         '</div>' +
       '</a>';
     grid.appendChild(tile);
-    if (!hasPhoto){
+    var ytImg = tile.querySelector('.tile-yt');
+    if (ytImg){
+      /* maxresdefault doesn't exist for every video; fall back to hqdefault */
+      ytImg.addEventListener('error', function(){
+        if (ytImg.src.indexOf('maxresdefault') !== -1) ytImg.src = ytImg.src.replace('maxresdefault', 'hqdefault');
+      });
+    }
+    if (!hasPhoto && !ytThumb){
       var cv = tile.querySelector('canvas');
       requestAnimationFrame(function(){ paintFrame(cv, 'tile-'+cat.id, cat.tintHex); });
     }
