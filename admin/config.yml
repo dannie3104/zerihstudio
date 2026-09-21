@@ -1,9 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: dannie3104/zerihstudio
   branch: main
-  identity_url: https://zeri-admin.netlify.app/.netlify/identity
-  gateway_url: https://zeri-admin.netlify.app/.netlify/git/github
+  base_url: https://api.netlify.com
+  site_domain: elegant-fenglisu-a79e7c.netlify.app
 
+# 上傳的照片會放進 repo 的 uploads 資料夾,網站用相對路徑讀取
 media_folder: "uploads"
 public_folder: "uploads"
 
@@ -24,10 +26,18 @@ collections:
             fields:
               - { label: "分類代碼 (id)", name: "id", widget: "string", hint: "英數字,不要有空格或中文;建立後請不要更改,照片會用這個代碼對應分類" }
               - { label: "中文名稱", name: "zh", widget: "string" }
-              - { label: "英文名稱", name: "en", widget: "string", required: false }
-              - { label: "介紹句", name: "tagline", widget: "text" }
-              - { label: "主題色", name: "tintHex", widget: "color", hint: "沒有真實照片時,首頁方塊會用這個顏色顯示抽象光影當作示意圖" }
-              - { label: "影片網址(選填)", name: "videoUrl", widget: "string", required: false, hint: "YouTube、Vimeo 等外部連結,填了分類頁面會出現「觀看動態影片」按鈕" }
+              - { label: "英文名稱", name: "en", widget: "string", required: false, hint: "會顯示在該主題頁標題下方的小字,不填就不顯示" }
+              - { label: "介紹句", name: "tagline", widget: "text", required: false }
+              - { label: "主題色", name: "tintHex", widget: "color", hint: "沒有照片也沒有影片時,首頁方塊會用這個顏色顯示抽象光影" }
+              - label: "影片清單(選填)"
+                name: "videos"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}"
+                hint: "貼 YouTube 或 Vimeo 網址。沒有照片的分類,首頁封面會自動用第一支影片的縮圖"
+                fields:
+                  - { label: "影片標題", name: "label", widget: "string", required: false }
+                  - { label: "影片網址", name: "url", widget: "string" }
               - { label: "排序", name: "order", widget: "number", value_type: "int", hint: "數字小的排前面" }
 
   - name: "photos"
@@ -44,25 +54,25 @@ collections:
             fields:
               - { label: "照片代碼 (id)", name: "id", widget: "string", hint: "英數字,不要有空格或中文;建立後請不要更改" }
               - { label: "所屬分類代碼", name: "category", widget: "string", hint: "要跟「分類管理」裡的分類代碼完全一致,例如 wedding" }
-              - { label: "風格標籤", name: "tag", widget: "string", hint: "例如:迎娶、婚紗、戶外——會變成該分類頁面上的篩選按鈕" }
+              - { label: "風格標籤", name: "tag", widget: "string", required: false, hint: "例如:迎娶、婚紗、戶外——會變成該分類頁面上的篩選按鈕。可以先留空,之後再慢慢分類" }
               - { label: "排序", name: "order", widget: "number", value_type: "int" }
-              - { label: "照片檔案", name: "file", widget: "image" }
+              - { label: "照片檔案", name: "file", widget: "image", hint: "請先把照片縮到長邊約 1600px 再上傳,網站才會快" }
               - { label: "設為分類封面", name: "isCover", widget: "boolean", default: false, hint: "每個分類建議只勾一張,勾新的請記得把舊的取消" }
-              - { label: "設為首頁精選輪播", name: "isFeatured", widget: "boolean", default: false, hint: "可以勾很多張,首頁大圖會自動輪播這些照片" }
+              - { label: "封面上下位置", name: "coverPos", widget: "number", value_type: "int", min: 0, max: 100, required: false, hint: "只有封面照片需要。0=靠上、50=置中、100=靠下,用來微調首頁方塊裡看到的區域" }
+              - { label: "設為精選", name: "isFeatured", widget: "boolean", default: false, hint: "勾了會出現在該主題頁的「精選」,也會進入首頁大圖輪播" }
 
-  - name: "testimonials"
-    label: "顧客回饋"
+  - name: "faq"
+    label: "常見問題"
     files:
-      - file: "data/testimonials.json"
-        label: "所有回饋"
-        name: "testimonials"
+      - file: "data/faq.json"
+        label: "所有問題"
+        name: "faq"
         fields:
-          - label: "回饋清單"
-            name: "testimonials"
+          - label: "問題清單"
+            name: "faq"
             widget: "list"
-            summary: "{{fields.name}}"
+            summary: "{{fields.question}}"
             fields:
-              - { label: "客戶稱呼", name: "name", widget: "string" }
-              - { label: "標籤(選填)", name: "tag", widget: "string", required: false, hint: "例如:婚禮客戶、商業攝影" }
-              - { label: "回饋內容", name: "quote", widget: "text" }
-              - { label: "排序", name: "order", widget: "number", value_type: "int" }
+              - { label: "問題", name: "question", widget: "string" }
+              - { label: "回答", name: "answer", widget: "text" }
+              - { label: "排序", name: "order", widget: "number", value_type: "int", hint: "數字小的排前面" }
