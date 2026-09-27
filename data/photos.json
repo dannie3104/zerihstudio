@@ -741,15 +741,6 @@
       "isFeatured": false
     },
     {
-      "id": "ufa07vz6qkea5lwzrir6",
-      "category": "landscape",
-      "tag": "",
-      "order": 2,
-      "file": "photos/landscape/ufa07vz6qkea5lwzrir6.jpg",
-      "isCover": false,
-      "isFeatured": true
-    },
-    {
       "id": "8rqdfrax7q7eowglw3t4",
       "category": "landscape",
       "tag": "",
@@ -856,15 +847,6 @@
       "file": "photos/landscape/33bvwyu9j5j3epyn5iy3.jpg",
       "isCover": false,
       "isFeatured": true
-    },
-    {
-      "id": "mg787012dam5hx2lo65n",
-      "category": "landscape",
-      "tag": "",
-      "order": 15,
-      "file": "photos/landscape/mg787012dam5hx2lo65n.jpg",
-      "isCover": false,
-      "isFeatured": false
     },
     {
       "id": "4x7ztpkm72uf1nixaxx5",
@@ -1367,6 +1349,42 @@
       "tag": "登記",
       "order": 8,
       "file": "photos/event/oke1391puhjgb11h8xlf.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "vh523mwvccvdylwd5c9f",
+      "category": "landscape",
+      "tag": "",
+      "order": 20,
+      "file": "photos/landscape/vh523mwvccvdylwd5c9f.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "8447h4r6zw4fg2x5lpp8",
+      "category": "landscape",
+      "tag": "",
+      "order": 21,
+      "file": "photos/landscape/8447h4r6zw4fg2x5lpp8.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "i2qrerfw6xayv2tw7qjj",
+      "category": "landscape",
+      "tag": "",
+      "order": 22,
+      "file": "photos/landscape/i2qrerfw6xayv2tw7qjj.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "1jdqf7rkres4pjwc8rad",
+      "category": "landscape",
+      "tag": "",
+      "order": 23,
+      "file": "photos/landscape/1jdqf7rkres4pjwc8rad.jpg",
       "isCover": false,
       "isFeatured": false
     }
