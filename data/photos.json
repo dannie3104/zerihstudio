@@ -715,7 +715,7 @@
     {
       "id": "a5hvyv9yl33c2v7ybnfu",
       "category": "event",
-      "tag": "",
+      "tag": "登記",
       "order": 1,
       "file": "photos/event/a5hvyv9yl33c2v7ybnfu.jpg",
       "isCover": true,
@@ -725,7 +725,7 @@
     {
       "id": "kyifxg4b3c9gcivtsfqa",
       "category": "event",
-      "tag": "",
+      "tag": "登記",
       "order": 2,
       "file": "photos/event/kyifxg4b3c9gcivtsfqa.jpg",
       "isCover": false,
@@ -1315,6 +1315,60 @@
       "file": "photos/wedding/s5hc29fsa6wtk69q8cir.jpg",
       "isCover": false,
       "isFeatured": true
+    },
+    {
+      "id": "h07kgpe98akmbbr8dufu",
+      "category": "event",
+      "tag": "登記",
+      "order": 3,
+      "file": "photos/event/h07kgpe98akmbbr8dufu.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "92wrgroihaammeyu8wcm",
+      "category": "event",
+      "tag": "登記",
+      "order": 4,
+      "file": "photos/event/92wrgroihaammeyu8wcm.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "kctjj0fp2s1fmhqokrc4",
+      "category": "event",
+      "tag": "登記",
+      "order": 5,
+      "file": "photos/event/kctjj0fp2s1fmhqokrc4.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "3qigcwobuvv9hj36cd96",
+      "category": "event",
+      "tag": "登記",
+      "order": 6,
+      "file": "photos/event/3qigcwobuvv9hj36cd96.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "ivvchdiyml4j7y8n8n9m",
+      "category": "event",
+      "tag": "登記",
+      "order": 7,
+      "file": "photos/event/ivvchdiyml4j7y8n8n9m.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "oke1391puhjgb11h8xlf",
+      "category": "event",
+      "tag": "登記",
+      "order": 8,
+      "file": "photos/event/oke1391puhjgb11h8xlf.jpg",
+      "isCover": false,
+      "isFeatured": false
     }
   ]
 }
