@@ -828,7 +828,7 @@
       "order": 12,
       "file": "photos/landscape/1l7ozheudn6z1z5n93kf.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "cqq5kgb7qrmiibz6ekq9",
@@ -1359,7 +1359,7 @@
       "order": 20,
       "file": "photos/landscape/vh523mwvccvdylwd5c9f.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "8447h4r6zw4fg2x5lpp8",
@@ -1377,7 +1377,7 @@
       "order": 22,
       "file": "photos/landscape/i2qrerfw6xayv2tw7qjj.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "1jdqf7rkres4pjwc8rad",
@@ -1386,7 +1386,7 @@
       "order": 23,
       "file": "photos/landscape/1jdqf7rkres4pjwc8rad.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "jhqb3mw43hkol2jia0zu",
@@ -1395,7 +1395,7 @@
       "order": 24,
       "file": "photos/landscape/jhqb3mw43hkol2jia0zu.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "baed7t1b9xp2kj7u6nai",
