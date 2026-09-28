@@ -609,10 +609,11 @@
         if (ytm) ytThumb = 'https://i.ytimg.com/vi/'+ytm[1]+'/maxresdefault.jpg';
       }
     }
+    var tileLoad = idx === 0 ? '' : ' loading="lazy" decoding="async"';
     var mediaHtml = hasPhoto
-      ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'" style="object-position:50% '+coverPos+'%;">'
+      ? '<img class="tile-media" src="'+coverPhoto.file+'" alt="'+cat.zh+'" style="object-position:50% '+coverPos+'%;"'+tileLoad+'>'
       : ytThumb
-        ? '<img class="tile-media tile-yt" src="'+ytThumb+'" alt="'+cat.zh+'">'
+        ? '<img class="tile-media tile-yt" src="'+ytThumb+'" alt="'+cat.zh+'"'+tileLoad+'>'
         : '<canvas class="tile-media" width="1000" height="750"></canvas>';
     var countText = hasPhoto ? (cat.photos.length + ' 張作品') : (catVideos.length ? (catVideos.length > 1 ? catVideos.length + ' 支影片' : '動態影片') : '即將上線');
     var enHtml = cat.en ? '<span class="en">'+cat.en+'</span>' : '';
@@ -666,8 +667,12 @@
   }
 
   if (heroSlides.length){
+    /* Only the first slide gets a real src; the rest carry data-src and are
+       fetched just-in-time (current + next-up) so a page with dozens of
+       "首頁精選" photos doesn't download all of them on load. */
     var slideHtml = heroSlides.map(function(s, i){
-      return '<img class="hero-slide'+(i===0?' active':'')+'" src="'+s.photo.file+'" alt="'+s.cat.zh+'">';
+      var srcAttr = i===0 ? ' src="'+s.photo.file+'"' : ' data-src="'+s.photo.file+'"';
+      return '<img class="hero-slide'+(i===0?' active':'')+'"'+srcAttr+' alt="'+s.cat.zh+'" decoding="async">';
     }).join('');
     heroFrameBox.innerHTML = slideHtml + '<span class="frame-tag">MASTER ROLL</span>' +
       (heroSlides.length > 1 ? '<div class="hero-dots" id="hero-dots"></div>' : '');
@@ -687,10 +692,17 @@
       var heroTimer = null;
       var prefersReducedMotionHero = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      function ensureHeroLoaded(i){
+        var el = slideEls[i];
+        if (el && !el.getAttribute('src') && el.dataset.src){ el.src = el.dataset.src; }
+      }
       function showHeroSlide(i){
         heroIndex = i;
+        ensureHeroLoaded(i);
         slideEls.forEach(function(el, idx){ el.classList.toggle('active', idx===i); });
         dotEls.forEach(function(el, idx){ el.classList.toggle('active', idx===i); });
+        /* preload the next slide during this one's 4.5s dwell so the switch never waits on the network */
+        ensureHeroLoaded((i+1) % heroSlides.length);
       }
       function nextHeroSlide(){ showHeroSlide((heroIndex+1) % heroSlides.length); }
       function stopHeroAutoplay(){
@@ -709,6 +721,7 @@
       });
       heroFrameBox.addEventListener('mouseenter', stopHeroAutoplay);
       heroFrameBox.addEventListener('mouseleave', startHeroAutoplay);
+      ensureHeroLoaded(1);
       startHeroAutoplay();
     }
   } else {
