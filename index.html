@@ -381,6 +381,74 @@
     .site-nav .nav-en{display:block;font-size:9px;margin-top:1px;}
   }
 
+  /* ---------- polish pass: finer details, no layout changes ---------- */
+  html{scrollbar-width:thin;scrollbar-color:#3b4531 #14170f;}
+  h1,h2{letter-spacing:0.02em;}
+
+  .site-header{
+    border-bottom:1px solid transparent;
+    border-image:linear-gradient(90deg,transparent,rgba(180,145,91,0.38),transparent) 1;
+    box-shadow:0 12px 30px -20px rgba(0,0,0,0.7);
+  }
+  .site-nav > a,.nav-works > .nav-trigger{position:relative;}
+  .site-nav > a:hover,.nav-works > .nav-trigger:hover{border-color:transparent;}
+  .site-nav > a::after,.nav-works > .nav-trigger::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);
+    transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .site-nav > a:hover::after,.nav-works > .nav-trigger:hover::after{transform:scaleX(1);}
+
+  .works,.contact,.faq,.site-footer{
+    border-top:1px solid transparent;
+    border-image:linear-gradient(90deg,transparent,var(--line-strong) 18%,var(--line-strong) 82%,transparent) 1;
+  }
+  .works,.contact,.faq{position:relative;}
+  .works::before,.contact::before,.faq::before{
+    content:'';position:absolute;top:-5px;left:50%;width:9px;height:9px;
+    transform:translateX(-50%) rotate(45deg);background:var(--ink);border:1px solid rgba(180,145,91,0.55);
+  }
+
+  .btn-primary::after{content:'\2192';display:inline-block;margin-left:12px;transition:transform .3s ease;}
+  .btn-primary:hover::after{transform:translateX(5px);}
+
+  .frame-box{box-shadow:0 34px 60px -34px rgba(0,0,0,0.75);}
+  .frame-box::after{
+    content:'';position:absolute;inset:12px;border:1px solid rgba(239,231,216,0.26);
+    pointer-events:none;z-index:2;
+  }
+
+  .cat-tile{transition:transform .5s cubic-bezier(.2,.7,.2,1);}
+  .cat-tile a{transition:border-color .4s ease, box-shadow .5s ease;}
+  .cat-tile a:hover{border-color:var(--brass-soft);box-shadow:0 26px 44px -26px rgba(0,0,0,0.85);}
+  .cat-tile:hover{transform:translateY(-3px);}
+  .cat-tile a::after{
+    content:'';position:absolute;inset:10px;border:1px solid rgba(239,231,216,0);pointer-events:none;
+    transition:border-color .45s ease, inset .45s ease;
+  }
+  .cat-tile a:hover::after{border-color:rgba(239,231,216,0.36);inset:13px;}
+
+  .frame{transition:border-color .3s ease;}
+  .frame:hover{border-color:var(--brass-soft);}
+
+  img.tile-media,.frame img{opacity:0;}
+  img.tile-media{transition:transform .6s ease, opacity .9s ease;}
+  .frame img{transition:transform .5s ease, opacity .9s ease;}
+  img.tile-media.is-loaded,.frame img.is-loaded{opacity:1;}
+
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease var(--d,0ms), transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0ms);}
+  .rv.in{opacity:1;transform:none;}
+
+  .contact-list a{transition:border-color .25s ease, padding-left .3s ease, color .25s ease;}
+  .contact-list a:hover{padding-left:6px;color:var(--brass-bright);}
+  .faq-item summary{transition:color .25s ease;}
+  .faq-item summary:hover{color:var(--brass-bright);}
+  .faq-item[open] p{animation:faqIn .45s ease both;}
+  @keyframes faqIn{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:none;}}
+
+  .site-footer{padding:34px 0;}
+  .site-footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:6px;}
+  .site-footer p:first-child{color:var(--paper-dim);}
+
   @media(prefers-reduced-motion:reduce){
     *{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}
   }
@@ -504,6 +572,25 @@
 </div>
 
 <script>
+  /* ---------- polish: fade images in once loaded, reveal tiles as they scroll into view ---------- */
+  document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG') e.target.classList.add('is-loaded'); }, true);
+  document.addEventListener('error', function(e){ if (e.target && e.target.tagName === 'IMG') e.target.classList.add('is-loaded'); }, true);
+  var revealIO = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      revealIO.unobserve(el);
+      el.classList.add('in');
+      setTimeout(function(){ el.classList.remove('rv', 'in'); el.style.removeProperty('--d'); }, 1500);
+    });
+  }, {threshold:0.12}) : null;
+  function revealOnScroll(el, i){
+    if (!revealIO) return;
+    el.classList.add('rv');
+    el.style.setProperty('--d', ((i % 3) * 90) + 'ms');
+    revealIO.observe(el);
+  }
+
 (function(){
   "use strict";
 
@@ -643,6 +730,7 @@
         '</div>' +
       '</a>';
     grid.appendChild(tile);
+    revealOnScroll(tile, idx);
     var ytImg = tile.querySelector('.tile-yt');
     if (ytImg){
       /* maxresdefault doesn't exist for every video; fall back to hqdefault */
