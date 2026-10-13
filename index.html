@@ -1187,9 +1187,9 @@
 
   /* ---------- load content from data/*.json (editable via /admin CMS) ---------- */
   Promise.all([
-    fetch('data/categories.json').then(function(r){ return r.json(); }),
-    fetch('data/photos.json').then(function(r){ return r.json(); }),
-    fetch('data/faq.json').then(function(r){ return r.json(); })
+    fetch('data/categories.json', {cache:'no-cache'}).then(function(r){ return r.json(); }),
+    fetch('data/photos.json', {cache:'no-cache'}).then(function(r){ return r.json(); }),
+    fetch('data/faq.json', {cache:'no-cache'}).then(function(r){ return r.json(); })
   ]).then(function(results){
     var catData = results[0].categories || [];
     var photoData = results[1].photos || [];
