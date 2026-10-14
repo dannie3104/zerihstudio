@@ -201,7 +201,7 @@
     {
       "id": "q809thwxb1w9o8sw16zi",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 1,
       "file": "photos/cmty0j7fzvvhn/q809thwxb1w9o8sw16zi.jpg",
       "isCover": false,
@@ -210,16 +210,16 @@
     {
       "id": "mqgidjffynwchlak7ix7",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 2,
       "file": "photos/cmty0j7fzvvhn/mqgidjffynwchlak7ix7.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "pcay8rvyhhxnys34yntc",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 3,
       "file": "photos/cmty0j7fzvvhn/pcay8rvyhhxnys34yntc.jpg",
       "isCover": true,
@@ -229,7 +229,7 @@
     {
       "id": "61apir2c5us2gfolgchx",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 4,
       "file": "photos/cmty0j7fzvvhn/61apir2c5us2gfolgchx.jpg",
       "isCover": false,
@@ -238,25 +238,16 @@
     {
       "id": "shdfxob48jlwzxmr5rgi",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 5,
       "file": "photos/cmty0j7fzvvhn/shdfxob48jlwzxmr5rgi.jpg",
       "isCover": false,
       "isFeatured": true
     },
     {
-      "id": "qqqvwc46z7u6767roxki",
-      "category": "cmty0j7fzvvhn",
-      "tag": "",
-      "order": 6,
-      "file": "photos/cmty0j7fzvvhn/qqqvwc46z7u6767roxki.jpg",
-      "isCover": false,
-      "isFeatured": false
-    },
-    {
       "id": "aiqjwwhojruv7qo2ppho",
       "category": "cmty0j7fzvvhn",
-      "tag": "",
+      "tag": "戶外",
       "order": 7,
       "file": "photos/cmty0j7fzvvhn/aiqjwwhojruv7qo2ppho.jpg",
       "isCover": false,
