@@ -259,7 +259,7 @@
       "tag": "尼泊爾商周攝影",
       "order": 1,
       "file": "photos/cmu59342st397/zoo3ngg0f0qi8ggp2buz.jpg",
-      "isCover": true,
+      "isCover": false,
       "isFeatured": false
     },
     {
@@ -3708,6 +3708,555 @@
       "tag": "戶外",
       "order": 44,
       "file": "photos/Proposal/7dls15hfhoavbxdw6s6e.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "tk5ftnlcalll1w8yp4mn",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 8,
+      "file": "photos/cmty0j7fzvvhn/tk5ftnlcalll1w8yp4mn.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "fx03oyft6go5u9tgqi4f",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 10,
+      "file": "photos/cmty0j7fzvvhn/fx03oyft6go5u9tgqi4f.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "2lknsi6flebx4mtc53jn",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 11,
+      "file": "photos/cmty0j7fzvvhn/2lknsi6flebx4mtc53jn.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "gwfz1pdmawvdqy8ssa36",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 12,
+      "file": "photos/cmty0j7fzvvhn/gwfz1pdmawvdqy8ssa36.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "y4uyhw2lag7swgb9rj2a",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 13,
+      "file": "photos/cmty0j7fzvvhn/y4uyhw2lag7swgb9rj2a.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "yos2udt0nb8lfb4wwimp",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 14,
+      "file": "photos/cmty0j7fzvvhn/yos2udt0nb8lfb4wwimp.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "oitrkydxr5ny2tpvnvu0",
+      "category": "cmty0j7fzvvhn",
+      "tag": "棚拍",
+      "order": 15,
+      "file": "photos/cmty0j7fzvvhn/oitrkydxr5ny2tpvnvu0.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "4nasjgie4j0a49yh8k0t",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 32,
+      "file": "photos/cmu59342st397/4nasjgie4j0a49yh8k0t.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "jqbjms9qnv3gu1fi7q04",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 33,
+      "file": "photos/cmu59342st397/jqbjms9qnv3gu1fi7q04.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "m9qdkzh801hyyqke9zl9",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 34,
+      "file": "photos/cmu59342st397/m9qdkzh801hyyqke9zl9.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "zw63gvvhjsrzolans7z3",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 35,
+      "file": "photos/cmu59342st397/zw63gvvhjsrzolans7z3.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "n1qscvquyt13hhnyn8mg",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 36,
+      "file": "photos/cmu59342st397/n1qscvquyt13hhnyn8mg.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "5g3dnxxpqb2lztw073w6",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 37,
+      "file": "photos/cmu59342st397/5g3dnxxpqb2lztw073w6.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "3ae0j717rjwovw0re9sp",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 38,
+      "file": "photos/cmu59342st397/3ae0j717rjwovw0re9sp.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "jgbmqdl6e0wjturxz23l",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 39,
+      "file": "photos/cmu59342st397/jgbmqdl6e0wjturxz23l.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "vu4jjlk9uht43d7rlf5k",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 40,
+      "file": "photos/cmu59342st397/vu4jjlk9uht43d7rlf5k.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "vzro74nfypvjur7m6uew",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 41,
+      "file": "photos/cmu59342st397/vzro74nfypvjur7m6uew.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "6c2asa74tewv2sr8at52",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 42,
+      "file": "photos/cmu59342st397/6c2asa74tewv2sr8at52.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "d6o5yj82xsjywtfbpxw2",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 43,
+      "file": "photos/cmu59342st397/d6o5yj82xsjywtfbpxw2.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "f823g3s91k2cnw9pdm9m",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 44,
+      "file": "photos/cmu59342st397/f823g3s91k2cnw9pdm9m.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "e4tnt9yxljdiwdas5jyh",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 45,
+      "file": "photos/cmu59342st397/e4tnt9yxljdiwdas5jyh.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "x827yds52tqsj7g6o61t",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 46,
+      "file": "photos/cmu59342st397/x827yds52tqsj7g6o61t.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "l7xzhdzpaiaosuvtj8o4",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 47,
+      "file": "photos/cmu59342st397/l7xzhdzpaiaosuvtj8o4.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "83yd8rjdvywx3wrnu1u7",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 48,
+      "file": "photos/cmu59342st397/83yd8rjdvywx3wrnu1u7.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "bgk4vv3u5u5qu4labo75",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 49,
+      "file": "photos/cmu59342st397/bgk4vv3u5u5qu4labo75.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "xoxzkgt2d6f72bq5enj5",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 50,
+      "file": "photos/cmu59342st397/xoxzkgt2d6f72bq5enj5.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "itu4mnb13252recw8row",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 52,
+      "file": "photos/cmu59342st397/itu4mnb13252recw8row.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "nbp4149v3zrt7j9l0xwo",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 51,
+      "file": "photos/cmu59342st397/nbp4149v3zrt7j9l0xwo.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "8bw7fw4m44hddl9kjb1m",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 53,
+      "file": "photos/cmu59342st397/8bw7fw4m44hddl9kjb1m.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "nx30912v71svd6ienljf",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 54,
+      "file": "photos/cmu59342st397/nx30912v71svd6ienljf.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "lx2wwhxcflhh8k61a05t",
+      "category": "cmu59342st397",
+      "tag": "龜山音樂節",
+      "order": 55,
+      "file": "photos/cmu59342st397/lx2wwhxcflhh8k61a05t.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "bjxc59jxlt4yrq6nfmg9",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 56,
+      "file": "photos/cmu59342st397/bjxc59jxlt4yrq6nfmg9.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "0sxpz58kolvv9c66oehp",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 57,
+      "file": "photos/cmu59342st397/0sxpz58kolvv9c66oehp.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "u088lr1nj0moqlwr4wca",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 58,
+      "file": "photos/cmu59342st397/u088lr1nj0moqlwr4wca.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "pdcew5h1jk53xb4gqnsg",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 59,
+      "file": "photos/cmu59342st397/pdcew5h1jk53xb4gqnsg.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "5rqnctilsubiinzpcdne",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 60,
+      "file": "photos/cmu59342st397/5rqnctilsubiinzpcdne.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "3ob5155jr8vieml73ffp",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 61,
+      "file": "photos/cmu59342st397/3ob5155jr8vieml73ffp.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "btfcbd3ob7s2nl4n6zpp",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 62,
+      "file": "photos/cmu59342st397/btfcbd3ob7s2nl4n6zpp.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "cdyvpqsp73gde6s0gmqa",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 63,
+      "file": "photos/cmu59342st397/cdyvpqsp73gde6s0gmqa.jpg",
+      "isCover": true,
+      "isFeatured": true
+    },
+    {
+      "id": "bdc72jufi8doegm9hcpl",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 64,
+      "file": "photos/cmu59342st397/bdc72jufi8doegm9hcpl.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "5joe91h9vtt7zwn1vufq",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 65,
+      "file": "photos/cmu59342st397/5joe91h9vtt7zwn1vufq.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "tz761b5mopeyy3epf5zh",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 66,
+      "file": "photos/cmu59342st397/tz761b5mopeyy3epf5zh.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "26pqc24tptwl0t68c9yi",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 67,
+      "file": "photos/cmu59342st397/26pqc24tptwl0t68c9yi.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "ikb6i5ipv2h056g7jafx",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 68,
+      "file": "photos/cmu59342st397/ikb6i5ipv2h056g7jafx.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "p8ledvceu2mt6jtj3p4q",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 69,
+      "file": "photos/cmu59342st397/p8ledvceu2mt6jtj3p4q.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "8f7pqrlhue9m1agv38i6",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 70,
+      "file": "photos/cmu59342st397/8f7pqrlhue9m1agv38i6.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "129jipbcn57m01f2r3qk",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 71,
+      "file": "photos/cmu59342st397/129jipbcn57m01f2r3qk.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "wxagiyjyv62pxydr9ejr",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 72,
+      "file": "photos/cmu59342st397/wxagiyjyv62pxydr9ejr.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "5bem4mgsqnxko4etb3o2",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 73,
+      "file": "photos/cmu59342st397/5bem4mgsqnxko4etb3o2.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "ghe0r841lin5oa5hrthg",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 74,
+      "file": "photos/cmu59342st397/ghe0r841lin5oa5hrthg.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "r1c1khxs91ff7z18gscd",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 75,
+      "file": "photos/cmu59342st397/r1c1khxs91ff7z18gscd.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "8z6mbieeida3ozl1c6n6",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 76,
+      "file": "photos/cmu59342st397/8z6mbieeida3ozl1c6n6.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "1ientuivm9gnfgnm3twk",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 77,
+      "file": "photos/cmu59342st397/1ientuivm9gnfgnm3twk.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "xw8b3v6bc551te6cxlme",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 78,
+      "file": "photos/cmu59342st397/xw8b3v6bc551te6cxlme.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "sn12rbdmisujps55ftsm",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 79,
+      "file": "photos/cmu59342st397/sn12rbdmisujps55ftsm.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "cj3y8m0skl0z1fkfc1ft",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 80,
+      "file": "photos/cmu59342st397/cj3y8m0skl0z1fkfc1ft.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "xtkmk0emfnc08p3m25gy",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 81,
+      "file": "photos/cmu59342st397/xtkmk0emfnc08p3m25gy.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "jrqpsfa4ehhbqo20fbvh",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 82,
+      "file": "photos/cmu59342st397/jrqpsfa4ehhbqo20fbvh.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "bprg8wgea0543q7a8nrh",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 83,
+      "file": "photos/cmu59342st397/bprg8wgea0543q7a8nrh.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "tulps9n0slk1py3ag7fg",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 84,
+      "file": "photos/cmu59342st397/tulps9n0slk1py3ag7fg.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "ga2uyw0ybqsutxjf6aq2",
+      "category": "cmu59342st397",
+      "tag": "七夕成年禮演唱會",
+      "order": 85,
+      "file": "photos/cmu59342st397/ga2uyw0ybqsutxjf6aq2.jpg",
       "isCover": false,
       "isFeatured": false
     }
