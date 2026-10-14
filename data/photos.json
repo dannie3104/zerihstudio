@@ -715,11 +715,11 @@
     {
       "id": "a5hvyv9yl33c2v7ybnfu",
       "category": "event",
-      "tag": "登記",
+      "tag": "散步",
       "order": 1,
       "file": "photos/event/a5hvyv9yl33c2v7ybnfu.jpg",
       "isCover": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "coverPos": 80
     },
     {
@@ -1301,7 +1301,7 @@
     {
       "id": "h07kgpe98akmbbr8dufu",
       "category": "event",
-      "tag": "登記",
+      "tag": "散步",
       "order": 3,
       "file": "photos/event/h07kgpe98akmbbr8dufu.jpg",
       "isCover": false,
@@ -1310,7 +1310,7 @@
     {
       "id": "92wrgroihaammeyu8wcm",
       "category": "event",
-      "tag": "登記",
+      "tag": "散步",
       "order": 4,
       "file": "photos/event/92wrgroihaammeyu8wcm.jpg",
       "isCover": false,
@@ -1319,11 +1319,11 @@
     {
       "id": "kctjj0fp2s1fmhqokrc4",
       "category": "event",
-      "tag": "登記",
+      "tag": "散步",
       "order": 5,
       "file": "photos/event/kctjj0fp2s1fmhqokrc4.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "3qigcwobuvv9hj36cd96",
@@ -1332,7 +1332,7 @@
       "order": 6,
       "file": "photos/event/3qigcwobuvv9hj36cd96.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "ivvchdiyml4j7y8n8n9m",
@@ -1341,7 +1341,7 @@
       "order": 7,
       "file": "photos/event/ivvchdiyml4j7y8n8n9m.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "oke1391puhjgb11h8xlf",
