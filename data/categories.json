@@ -87,6 +87,13 @@
       "en": "Proposal",
       "tintHex": "#d0bebe",
       "order": 9
+    },
+    {
+      "id": "Gender Reveal Party",
+      "zh": "性別派對",
+      "en": "Gender Reveal Party",
+      "tintHex": "#9eb9d7",
+      "order": 11
     }
   ]
 }
