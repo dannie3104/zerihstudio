@@ -1112,7 +1112,7 @@
     {
       "id": "c0w1kzs0wmv1px3dnvei",
       "category": "wedding",
-      "tag": "",
+      "tag": "合歡山",
       "order": 10,
       "file": "photos/wedding/c0w1kzs0wmv1px3dnvei.jpg",
       "isCover": false,
@@ -1121,7 +1121,7 @@
     {
       "id": "5224b8tl47kxohrb5ndc",
       "category": "wedding",
-      "tag": "",
+      "tag": "合歡山",
       "order": 11,
       "file": "photos/wedding/5224b8tl47kxohrb5ndc.jpg",
       "isCover": false,
@@ -1207,15 +1207,6 @@
       "file": "photos/wedding/pcuslmm45d31cmxhcp9t.jpg",
       "isCover": false,
       "isFeatured": true
-    },
-    {
-      "id": "xcubnghpm15bvidxzpg2",
-      "category": "wedding",
-      "tag": "嘉明湖",
-      "order": 21,
-      "file": "photos/wedding/xcubnghpm15bvidxzpg2.jpg",
-      "isCover": false,
-      "isFeatured": false
     },
     {
       "id": "nqyb969k5av3l5oukm1q",
@@ -6156,6 +6147,114 @@
       "tag": "仙台",
       "order": 90,
       "file": "photos/cmty0ir1kayci/88dojoqzh6gdt4oga2u0.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "9v88qz9mr06t25x1ke4c",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 36,
+      "file": "photos/wedding/9v88qz9mr06t25x1ke4c.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "27fkx5pagrnu9uiz681j",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 37,
+      "file": "photos/wedding/27fkx5pagrnu9uiz681j.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "me79l7qs0qby50nbzr56",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 38,
+      "file": "photos/wedding/me79l7qs0qby50nbzr56.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "rit92kss3ue42torhndl",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 39,
+      "file": "photos/wedding/rit92kss3ue42torhndl.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "hizzv6ubrvqegf5qio51",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 40,
+      "file": "photos/wedding/hizzv6ubrvqegf5qio51.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "pfarz2yqler3ab7lo1h1",
+      "category": "wedding",
+      "tag": "婚紗",
+      "order": 41,
+      "file": "photos/wedding/pfarz2yqler3ab7lo1h1.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "14aofmii2dbo6txvkft9",
+      "category": "wedding",
+      "tag": "嘉明湖",
+      "order": 42,
+      "file": "photos/wedding/14aofmii2dbo6txvkft9.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "hl8mbdat90faw2mshj3u",
+      "category": "wedding",
+      "tag": "嘉明湖",
+      "order": 43,
+      "file": "photos/wedding/hl8mbdat90faw2mshj3u.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "iuk1d1uqmgz9qwp7qsqp",
+      "category": "wedding",
+      "tag": "嘉明湖",
+      "order": 44,
+      "file": "photos/wedding/iuk1d1uqmgz9qwp7qsqp.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "g9j7d76a7tyxdey5v40g",
+      "category": "wedding",
+      "tag": "合歡山",
+      "order": 45,
+      "file": "photos/wedding/g9j7d76a7tyxdey5v40g.jpg",
+      "isCover": false,
+      "isFeatured": true
+    },
+    {
+      "id": "j6idw26bswyeee69k7f2",
+      "category": "wedding",
+      "tag": "合歡山",
+      "order": 46,
+      "file": "photos/wedding/j6idw26bswyeee69k7f2.jpg",
+      "isCover": false,
+      "isFeatured": false
+    },
+    {
+      "id": "efgqdv7tvmc8yqmydit9",
+      "category": "wedding",
+      "tag": "合歡山",
+      "order": 47,
+      "file": "photos/wedding/efgqdv7tvmc8yqmydit9.jpg",
       "isCover": false,
       "isFeatured": true
     }
