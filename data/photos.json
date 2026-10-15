@@ -706,7 +706,7 @@
     {
       "id": "a5hvyv9yl33c2v7ybnfu",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 1,
       "file": "photos/event/a5hvyv9yl33c2v7ybnfu.jpg",
       "isCover": true,
@@ -717,7 +717,7 @@
       "id": "kyifxg4b3c9gcivtsfqa",
       "category": "event",
       "tag": "登記",
-      "order": 2,
+      "order": 3,
       "file": "photos/event/kyifxg4b3c9gcivtsfqa.jpg",
       "isCover": false,
       "isFeatured": false
@@ -1283,8 +1283,8 @@
     {
       "id": "h07kgpe98akmbbr8dufu",
       "category": "event",
-      "tag": "散步",
-      "order": 3,
+      "tag": "寫真",
+      "order": 2,
       "file": "photos/event/h07kgpe98akmbbr8dufu.jpg",
       "isCover": false,
       "isFeatured": false
@@ -1292,7 +1292,7 @@
     {
       "id": "92wrgroihaammeyu8wcm",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 4,
       "file": "photos/event/92wrgroihaammeyu8wcm.jpg",
       "isCover": false,
@@ -1301,7 +1301,7 @@
     {
       "id": "kctjj0fp2s1fmhqokrc4",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 5,
       "file": "photos/event/kctjj0fp2s1fmhqokrc4.jpg",
       "isCover": false,
@@ -4771,7 +4771,7 @@
       "order": 12,
       "file": "photos/event/zkth6yix8uixy7ikn2yp.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "b5lt3ibe72988zz4x68r",
@@ -4821,7 +4821,7 @@
     {
       "id": "ul7mdjy7aclcdc3gg9fh",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 18,
       "file": "photos/event/ul7mdjy7aclcdc3gg9fh.jpg",
       "isCover": false,
@@ -4830,7 +4830,7 @@
     {
       "id": "6s3p8r47tf8gf75ybgg8",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 19,
       "file": "photos/event/6s3p8r47tf8gf75ybgg8.jpg",
       "isCover": false,
@@ -4839,11 +4839,11 @@
     {
       "id": "9ghx6aknailr97d32dv4",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 20,
       "file": "photos/event/9ghx6aknailr97d32dv4.jpg",
       "isCover": false,
-      "isFeatured": false
+      "isFeatured": true
     },
     {
       "id": "y0kkrdpjggvv9n9qc8da",
@@ -4866,7 +4866,7 @@
     {
       "id": "86stbefzyaw02sutnxdz",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 21,
       "file": "photos/event/86stbefzyaw02sutnxdz.jpg",
       "isCover": false,
@@ -4875,7 +4875,7 @@
     {
       "id": "tom3vkp4ocd40w33xb9m",
       "category": "event",
-      "tag": "散步",
+      "tag": "寫真",
       "order": 22,
       "file": "photos/event/tom3vkp4ocd40w33xb9m.jpg",
       "isCover": false,
@@ -4884,7 +4884,7 @@
     {
       "id": "hxkvn2bpmuhjlewc9xck",
       "category": "event",
-      "tag": "登記",
+      "tag": "寫真",
       "order": 23,
       "file": "photos/event/hxkvn2bpmuhjlewc9xck.jpg",
       "isCover": false,
