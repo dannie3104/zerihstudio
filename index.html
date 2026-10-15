@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="site-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -446,6 +446,12 @@
   .site-footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:6px;}
   .site-footer p:first-child{color:var(--paper-dim);}
 
+  /* ---------- editable text: hide built-in text until data/site.json is applied, so edits never flash the old wording ---------- */
+  [data-site]{transition:opacity .3s ease;}
+  .site-pending [data-site]{opacity:0;}
+  .site-nav .nav-en::before{content:'/';}
+  bdi{unicode-bidi:normal;}
+
   @media(prefers-reduced-motion:reduce){
     *{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}
   }
@@ -453,6 +459,8 @@
   .fade-in{animation:fadeUp .6s ease both;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 </style>
+<script>setTimeout(function(){document.documentElement.classList.remove("site-pending");},3000);</script>
+<noscript><style>.site-pending [data-site]{opacity:1 !important;}</style></noscript>
 </head>
 <body>
 
@@ -460,17 +468,17 @@
   <header class="site-header">
     <div class="wrap">
       <a href="#/" class="brand">
-        <span class="brand-zh">澤日影像</span>
-        <span class="brand-en">Studio of Light</span>
+        <span class="brand-zh" data-site="brand.zh">澤日影像</span>
+        <span class="brand-en" data-site="brand.en">Studio of Light</span>
       </a>
       <nav class="site-nav">
-        <a href="#about">關於澤日<span class="nav-en">/About Us</span></a>
+        <a href="#about"><span data-site="nav.about_zh">關於澤日</span><span class="nav-en" data-site="nav.about_en">About Us</span></a>
         <div class="nav-item nav-works" id="nav-works-item">
-          <a href="#works" class="nav-trigger" id="works-trigger">作品<span class="nav-en">/Portfolio</span></a>
+          <a href="#works" class="nav-trigger" id="works-trigger"><span data-site="nav.works_zh">作品</span><span class="nav-en" data-site="nav.works_en">Portfolio</span></a>
           <div class="works-panel" id="works-panel"></div>
         </div>
-        <a href="#faq">常見問題<span class="nav-en">/FAQ</span></a>
-        <a href="#contact">聯絡<span class="nav-en">/Contact Us</span></a>
+        <a href="#faq"><span data-site="nav.faq_zh">常見問題</span><span class="nav-en" data-site="nav.faq_en">FAQ</span></a>
+        <a href="#contact"><span data-site="nav.contact_zh">聯絡</span><span class="nav-en" data-site="nav.contact_en">Contact Us</span></a>
       </nav>
     </div>
   </header>
@@ -479,11 +487,11 @@
     <section class="hero" id="about">
       <div class="wrap">
         <div class="hero-copy fade-in">
-          <span class="eyebrow">About · 關於澤日影像</span>
-          <h1>「排山倒海,幸好來日與你。」</h1>
-          <p>澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
+          <span class="eyebrow" data-site="hero.eyebrow">About · 關於澤日影像</span>
+          <h1 data-site="hero.title">「排山倒海,幸好來日與你。」</h1>
+          <p data-site="hero.text">澤日影像創立於對自然與人情溫度的熱愛。我們相信,最動人的照片往往不在精緻的棚拍裡,而是在山巔的風中、在海外小鎮的街角,以及新人相視一笑的瞬間。作為一名愛爬山的攝影師,我們習慣陪你走得更遠、踏上海拔更高的景緻,為你們定格一生一次的壯麗與溫柔。擇一好日,紀錄你們的愛與故事。</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#works">瀏覽作品集</a>
+            <a class="btn btn-primary" href="#works" data-site="hero.button">瀏覽作品集</a>
           </div>
         </div>
         <div class="hero-frame fade-in">
@@ -496,9 +504,9 @@
     <section class="works" id="works">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Browse by Theme · 瀏覽主題</span>
-          <h2>一卷底片,一種凝視。</h2>
-          <p>點選任一主題,進入專屬的觀景窗,依拍攝風格再次篩選。</p>
+          <span class="eyebrow" data-site="works.eyebrow">Browse by Theme · 瀏覽主題</span>
+          <h2 data-site="works.title">一卷底片,一種凝視。</h2>
+          <p data-site="works.text">點選任一主題,進入專屬的觀景窗,依拍攝風格再次篩選。</p>
         </div>
         <div class="cat-grid" id="cat-grid"></div>
       </div>
@@ -508,18 +516,18 @@
     <section class="contact" id="contact">
       <div class="wrap">
         <div>
-          <span class="eyebrow">Contact · 開始合作</span>
-          <h2>預約你的<br>拍攝計畫。</h2>
-          <p>無論是婚禮紀錄、品牌形象或個人寫真,歡迎先聊聊你想留下的畫面。</p>
+          <span class="eyebrow" data-site="contact.eyebrow">Contact · 開始合作</span>
+          <h2 data-site="contact.title">預約你的<br>拍攝計畫。</h2>
+          <p data-site="contact.text">無論是婚禮紀錄、品牌形象或個人寫真,歡迎先聊聊你想留下的畫面。</p>
           <dl class="spec-sheet">
-            <div class="spec-row"><dt>拍攝範圍</dt><dd>高山 / 海外自助婚紗・婚禮紀錄・空間攝影・活動紀錄</dd></div>
-            <div class="spec-row"><dt>服務地區</dt><dd>• 台灣全區：全台皆可服務，並以「合歡山及高海拔山區」為特色戶外拍攝據點。
+            <div class="spec-row"><dt data-site="contact.scope_label">拍攝範圍</dt><dd data-site="contact.scope_text">高山 / 海外自助婚紗・婚禮紀錄・空間攝影・活動紀錄</dd></div>
+            <div class="spec-row"><dt data-site="contact.area_label">服務地區</dt><dd data-site="contact.area_text">• 台灣全區：全台皆可服務，並以「合歡山及高海拔山區」為特色戶外拍攝據點。
 • 海外隨行：提供定期日本海外檔期（如京都、仙台自助婚紗），亦接受其他國家預約隨行拍攝。</dd></div>
           </dl>
         </div>
         <ul class="contact-list">
-          <li><a href="mailto:dannie31044@gmail.com">dannie31044@gmail.com <span>Email</span></a></li>
-          <li><a href="https://www.instagram.com/zerih_studio_?stkn=eHl1c3Jybnl0Y3Fp&utm_source=qr" target="_blank" rel="noopener">@zerih_studio_ <span>Instagram</span></a></li>
+          <li><a href="mailto:dannie31044@gmail.com" data-site-href="contact.email" data-site-href-prefix="mailto:"><bdi data-site="contact.email">dannie31044@gmail.com</bdi> <span>Email</span></a></li>
+          <li><a href="https://www.instagram.com/zerih_studio_?stkn=eHl1c3Jybnl0Y3Fp&utm_source=qr" data-site-href="contact.instagram_url" target="_blank" rel="noopener"><bdi data-site="contact.instagram_name">@zerih_studio_</bdi> <span>Instagram</span></a></li>
         </ul>
       </div>
     </section>
@@ -527,8 +535,8 @@
     <section class="faq" id="faq">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">FAQ · 常見問題</span>
-          <h2>拍攝前,你可能想知道。</h2>
+          <span class="eyebrow" data-site="faq.eyebrow">FAQ · 常見問題</span>
+          <h2 data-site="faq.title">拍攝前,你可能想知道。</h2>
         </div>
         <div class="faq-list" id="faq-list"></div>
       </div>
@@ -540,8 +548,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>© 2026 澤日影像 STUDIO OF LIGHT</p>
-      <p>ALL FRAMES DEVELOPED IN-HOUSE</p>
+      <p data-site="footer.line1">© 2026 澤日影像 STUDIO OF LIGHT</p>
+      <p data-site="footer.line2">ALL FRAMES DEVELOPED IN-HOUSE</p>
     </div>
   </footer>
 </div>
@@ -569,6 +577,35 @@
 </div>
 
 <script>
+  /* ---------- editable site text: data/site.json fills every [data-site] element; blanks keep the built-in default ---------- */
+  function siteGet(obj, path){
+    return path.split('.').reduce(function(o, k){ return (o && o[k] != null) ? o[k] : undefined; }, obj);
+  }
+  function applySiteText(site){
+    document.querySelectorAll('[data-site]').forEach(function(el){
+      var v = siteGet(site, el.getAttribute('data-site'));
+      if (typeof v !== 'string' || !v.trim()) return;
+      el.textContent = '';
+      v.split('\n').forEach(function(line, i){
+        if (i) el.appendChild(document.createElement('br'));
+        el.appendChild(document.createTextNode(line));
+      });
+    });
+    document.querySelectorAll('[data-site-href]').forEach(function(el){
+      var v = siteGet(site, el.getAttribute('data-site-href'));
+      if (typeof v !== 'string' || !v.trim()) return;
+      var prefix = el.getAttribute('data-site-href-prefix') || '';
+      v = v.trim();
+      if (!prefix && !/^https?:\/\//i.test(v)) return;
+      el.setAttribute('href', prefix + v);
+    });
+  }
+  fetch('data/site.json', {cache:'no-cache'})
+    .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(applySiteText)
+    .catch(function(){})
+    .then(function(){ document.documentElement.classList.remove('site-pending'); });
+
   /* ---------- polish: fade images in once loaded, reveal tiles as they scroll into view ---------- */
   document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG') e.target.classList.add('is-loaded'); }, true);
   document.addEventListener('error', function(e){ if (e.target && e.target.tagName === 'IMG') e.target.classList.add('is-loaded'); }, true);

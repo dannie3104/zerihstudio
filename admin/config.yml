@@ -12,6 +12,82 @@ public_folder: "uploads"
 locale: "zh_Hant"
 
 collections:
+  - name: "site"
+    label: "網站文字"
+    files:
+      - file: "data/site.json"
+        label: "首頁與頁尾的文字"
+        name: "site"
+        fields:
+          - label: "標題列"
+            name: "brand"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "品牌名稱(中文)", name: "zh", widget: "string", required: false }
+              - { label: "品牌名稱(英文小字)", name: "en", widget: "string", required: false }
+          - label: "上方導覽按鈕"
+            name: "nav"
+            widget: "object"
+            collapsed: true
+            hint: "英文不用自己加斜線,網站會自動加上"
+            fields:
+              - { label: "「關於」中文", name: "about_zh", widget: "string", required: false }
+              - { label: "「關於」英文", name: "about_en", widget: "string", required: false }
+              - { label: "「作品」中文", name: "works_zh", widget: "string", required: false }
+              - { label: "「作品」英文", name: "works_en", widget: "string", required: false }
+              - { label: "「常見問題」中文", name: "faq_zh", widget: "string", required: false }
+              - { label: "「常見問題」英文", name: "faq_en", widget: "string", required: false }
+              - { label: "「聯絡」中文", name: "contact_zh", widget: "string", required: false }
+              - { label: "「聯絡」英文", name: "contact_en", widget: "string", required: false }
+          - label: "首頁最上方介紹"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "小標(金色小字)", name: "eyebrow", widget: "string", required: false }
+              - { label: "大標題", name: "title", widget: "text", required: false }
+              - { label: "介紹內文", name: "text", widget: "text", required: false }
+              - { label: "按鈕文字", name: "button", widget: "string", required: false }
+          - label: "作品區"
+            name: "works"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "小標(金色小字)", name: "eyebrow", widget: "string", required: false }
+              - { label: "標題", name: "title", widget: "text", required: false }
+              - { label: "說明文字", name: "text", widget: "text", required: false }
+          - label: "聯絡區"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "小標(金色小字)", name: "eyebrow", widget: "string", required: false }
+              - { label: "標題", name: "title", widget: "text", required: false, hint: "要換行就直接按 Enter" }
+              - { label: "說明文字", name: "text", widget: "text", required: false }
+              - { label: "第一項名稱", name: "scope_label", widget: "string", required: false, hint: "原本是「拍攝範圍」" }
+              - { label: "第一項內容", name: "scope_text", widget: "text", required: false }
+              - { label: "第二項名稱", name: "area_label", widget: "string", required: false, hint: "原本是「服務地區」" }
+              - { label: "第二項內容", name: "area_text", widget: "text", required: false, hint: "要換行就直接按 Enter" }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "Instagram 顯示名稱", name: "instagram_name", widget: "string", required: false, hint: "例如 @zerih_studio_" }
+              - { label: "Instagram 網址", name: "instagram_url", widget: "string", required: false, hint: "要以 https:// 開頭" }
+          - label: "常見問題區標題"
+            name: "faq"
+            widget: "object"
+            collapsed: true
+            hint: "問題與回答本身請到「常見問題」編輯"
+            fields:
+              - { label: "小標(金色小字)", name: "eyebrow", widget: "string", required: false }
+              - { label: "標題", name: "title", widget: "text", required: false }
+          - label: "頁尾"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "第一行", name: "line1", widget: "string", required: false }
+              - { label: "第二行", name: "line2", widget: "string", required: false }
+
   - name: "categories"
     label: "分類管理"
     files:
