@@ -118,16 +118,13 @@
   }
   .works-cat-link:hover{color:var(--brass-bright);}
   .works-cat-toggle{
-    width:34px;height:36px;flex:none;color:var(--paper-faint);font-size:10px;
+    width:34px;height:36px;flex:none;color:var(--paper-dim);font-size:10px;cursor:pointer;
     display:flex;align-items:center;justify-content:center;transition:transform .2s ease,color .2s ease;
   }
-  .works-cat-toggle:hover{color:var(--paper);}
+  .works-cat-toggle:hover,.works-cat-item.open .works-cat-toggle{color:var(--brass-bright);}
   .works-cat-item.open .works-cat-toggle{transform:rotate(180deg);}
   .works-cat-sub{display:none;flex-direction:column;padding:0 0 8px 26px;}
   .works-cat-item.open .works-cat-sub{display:flex;}
-  @media(hover:hover) and (pointer:fine){
-    .works-cat-item:hover .works-cat-sub{display:flex;}
-  }
   .works-cat-sub a{
     padding:6px 14px 6px 0;font-size:11.5px;color:var(--paper-faint);text-decoration:none;
     font-family:var(--font-mono);letter-spacing:0.03em;
@@ -1068,7 +1065,9 @@
       toggle.addEventListener('click', function(e){
         e.preventDefault();
         e.stopPropagation();
-        item.classList.toggle('open');
+        var willOpen = !item.classList.contains('open');
+        worksPanel.querySelectorAll('.works-cat-item.open').forEach(function(it){ it.classList.remove('open'); });
+        if (willOpen) item.classList.add('open');
       });
 
       item.appendChild(row);
